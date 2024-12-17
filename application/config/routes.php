@@ -6,3 +6,4 @@ $route['login'] = 'auth/login';
 $route['logout'] = 'auth/logout';
 $route['utilisateur'] = 'utilisateur/index';
 $route['employees'] = 'employees/index';
+$route['dashboard'] = 'dashboard/index';
