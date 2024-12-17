@@ -3,6 +3,13 @@
 class User_model extends CI_Model {
 
     public function createUser($data) {
+
+
+        if (isset($data['password'])) {
+            $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
+        }
+
+
         if ($this->db->insert('users', $data)) {
             return $this->db->insert_id();
         } else {
@@ -12,6 +19,12 @@ class User_model extends CI_Model {
     }
 
     public function updateUser($data, $id) {
+
+        if (isset($data['password'])) {
+            $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
+        }
+
+        
         $this->db->where('id', $id);
         if ($this->db->update('users', $data)) {
             return true;
@@ -42,7 +55,7 @@ class User_model extends CI_Model {
     }
 
     public function getUsersWithSearch($text = '', $by = 'name') {
-        $allowedColumns = ['name', 'surname', 'login', 'role'];
+        $allowedColumns = ['nom', 'prenom', 'login', 'role'];
         if (!in_array($by, $allowedColumns)) {
             log_message('error', 'Colonne invalide pour la recherche : ' . $by);
             show_error('Colonne invalide pour la recherche.', 400);
@@ -61,6 +74,27 @@ class User_model extends CI_Model {
         } else {
             log_message('error', 'Échec de la récupération des utilisateurs avec la recherche : ' . $this->db->last_query());
             return [];
+        }
+    }
+
+    public function get_user_by_login($login) {
+        $query = $this->db->select('*')->from('users')->where('login', $login)->get();
+        if ($query) {
+            return $query->row();
+        } else {
+            log_message('error', 'Échec de la récupération de l\'utilisateur avec le login ' . $login . ': ' . $this->db->last_query());
+            return null;
+        }
+    }
+    
+
+    public function validate_login($login, $password) {
+        $user = $this->get_user_by_login($login);
+
+        if ($user && password_verify($password, $user->password)) {
+            return $user;
+        } else {
+            return null;
         }
     }
 }
