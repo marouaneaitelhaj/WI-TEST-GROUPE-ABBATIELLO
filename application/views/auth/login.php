@@ -13,8 +13,8 @@
         <label for="login">Login</label>
         <input type="text" name="login" id="login" required>
 
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
+        <label for="mot_de_passe">Password</label>
+        <input type="password" name="mot_de_passe" id="mot_de_passe" required>
 
         <button type="submit">Login</button>
     </form>

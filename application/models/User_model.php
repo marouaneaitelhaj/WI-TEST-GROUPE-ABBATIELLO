@@ -10,7 +10,7 @@ class User_model extends CI_Model {
         }
 
 
-        if ($this->db->insert('users', $data)) {
+        if ($this->db->insert('utilisateur', $data)) {
             return $this->db->insert_id();
         } else {
             log_message('error', 'Échec de l\'insertion de l\'utilisateur : ' . $this->db->last_query());
@@ -26,7 +26,7 @@ class User_model extends CI_Model {
 
 
         $this->db->where('id', $id);
-        if ($this->db->update('users', $data)) {
+        if ($this->db->update('utilisateur', $data)) {
             return true;
         } else {
             log_message('error', 'Échec de la mise à jour de l\'utilisateur avec l\'ID ' . $id . ': ' . $this->db->last_query());
@@ -36,7 +36,7 @@ class User_model extends CI_Model {
 
     public function deleteUser($id) {
         $this->db->where('id', $id);
-        if ($this->db->delete('users')) {
+        if ($this->db->delete('utilisateur')) {
             return true;
         } else {
             log_message('error', 'Échec de la suppression de l\'utilisateur avec l\'ID ' . $id . ': ' . $this->db->last_query());
@@ -44,8 +44,8 @@ class User_model extends CI_Model {
         }
     }
 
-    public function getAllUsers() {
-        $query = $this->db->select('*')->from('users')->get();
+    public function getAllUtilisateur() {
+        $query = $this->db->select('*')->from('utilisateur')->get();
         if ($query) {
             return $query->result();
         } else {
@@ -54,7 +54,7 @@ class User_model extends CI_Model {
         }
     }
 
-    public function getUsersWithSearch($text = '', $by = 'name') {
+    public function getUtilisateurWithSearch($text = '', $by = 'name') {
         $allowedColumns = ['nom', 'prenom', 'login', 'role'];
         if (!in_array($by, $allowedColumns)) {
             log_message('error', 'Colonne invalide pour la recherche : ' . $by);
@@ -62,7 +62,7 @@ class User_model extends CI_Model {
             return [];
         }
 
-        $this->db->select('*')->from('users');
+        $this->db->select('*')->from('utilisateur');
 
         if (!empty($text)) {
             $this->db->like($by, $text);
@@ -78,7 +78,7 @@ class User_model extends CI_Model {
     }
 
     public function get_user_by_login($login) {
-        $query = $this->db->select('*')->from('users')->where('login', $login)->get();
+        $query = $this->db->select('*')->from('utilisateur')->where('login', $login)->get();
         if ($query) {
             return $query->row();
         } else {
@@ -91,7 +91,7 @@ class User_model extends CI_Model {
     public function validate_login($login, $password) {
         $user = $this->get_user_by_login($login);
 
-        if ($user && password_verify($password, $user->password)) {
+        if ($user && password_verify($password, $user->mot_de_passe)) {
             return $user;
         } else {
             return null;
