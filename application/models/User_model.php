@@ -5,8 +5,8 @@ class User_model extends CI_Model {
     public function createUser($data) {
 
 
-        if (isset($data['password'])) {
-            $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
+        if (isset($data['mot_de_passe'])) {
+            $data['mot_de_passe'] = password_hash($data['mot_de_passe'], PASSWORD_BCRYPT);
         }
 
 
@@ -20,11 +20,11 @@ class User_model extends CI_Model {
 
     public function updateUser($data, $id) {
 
-        if (isset($data['password'])) {
-            $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
+        if (isset($data['mot_de_passe'])) {
+            $data['mot_de_passe'] = password_hash($data['mot_de_passe'], PASSWORD_BCRYPT);
         }
 
-        
+
         $this->db->where('id', $id);
         if ($this->db->update('users', $data)) {
             return true;
