@@ -1,28 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+  <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-</head>
-<body>
-    <?php if ($this->session->flashdata('error')): ?>
-        <p style="color: red;"><?php echo $this->session->flashdata('error'); ?></p>
-    <?php endif; ?>
-    <form action="<?php echo site_url('auth/do_register'); ?>" method="post">
-        <label for="login">Login</label>
-        <input type="text" name="login" id="login" required>
+    <title>AdminLTE 2 | Registration Page</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
-        <label for="mot_de_passe">Password</label>
-        <input type="password" name="mot_de_passe" id="mot_de_passe" required>
+    <!-- Bootstrap 3.3.7 -->
+    <link href="<?= base_url('assets/adminlte/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme style -->
+    <link href="<?= base_url('assets/adminlte/dist/css/AdminLTE.min.css'); ?>" rel="stylesheet" type="text/css" />
+    <!-- iCheck -->
+    <link href="<?= base_url('assets/adminlte/plugins/iCheck/square/blue.css'); ?>" rel="stylesheet" type="text/css" />
+  </head>
+  <body class="register-page">
+    <div class="register-box">
+      <div class="register-logo">
+        <a href="#"><b>Admin</b>LTE</a>
+      </div>
 
-        <label for="nom">Nom</label>
-        <input type="text" name="nom" id="nom" required>
+      <div class="register-box-body">
+        <p class="login-box-msg">Register a new membership</p>
 
-        <label for="prenom">Prenom</label>
-        <input type="text" name="prenom" id="prenom" required>
+        <!-- Flash Error Message -->
+        <?php if ($this->session->flashdata('error')): ?>
+          <p style="color: red; text-align: center;">
+            <?= $this->session->flashdata('error'); ?>
+          </p>
+        <?php endif; ?>
 
-        <button type="submit">Register</button>
-    </form>
-</body>
+        <!-- Form -->
+        <form action="<?= site_url('auth/do_register'); ?>" method="post">
+          <!-- Login -->
+          <div class="form-group has-feedback">
+            <input type="text" name="login" id="login" class="form-control" placeholder="Login" required />
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group has-feedback">
+            <input type="password" name="mot_de_passe" id="mot_de_passe" class="form-control" placeholder="Password" required />
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+
+          <!-- Nom -->
+          <div class="form-group has-feedback">
+            <input type="text" name="nom" id="nom" class="form-control" placeholder="Nom" required />
+            <span class="glyphicon glyphicon-tag form-control-feedback"></span>
+          </div>
+
+          <!-- Prenom -->
+          <div class="form-group has-feedback">
+            <input type="text" name="prenom" id="prenom" class="form-control" placeholder="Prenom" required />
+            <span class="glyphicon glyphicon-tag form-control-feedback"></span>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="row">
+            <div class="col-xs-12">
+              <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+            </div>
+          </div>
+        </form>
+        
+        <a href="<?= site_url('auth/login'); ?>" class="text-center">I already have a account</a>
+      </div><!-- /.form-box -->
+    </div><!-- /.register-box -->
+
+    <!-- jQuery 2.1.3 -->
+    <script src="<?= base_url('assets/adminlte/plugins/jQuery/jQuery-2.1.3.min.js'); ?>"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="<?= base_url('assets/adminlte/bootstrap/js/bootstrap.min.js'); ?>"></script>
+    <!-- iCheck -->
+    <script src="<?= base_url('assets/adminlte/plugins/iCheck/icheck.min.js'); ?>"></script>
+    <script>
+      $(function () {
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
+          increaseArea: '20%' // optional
+        });
+      });
+    </script>
+  </body>
 </html>
