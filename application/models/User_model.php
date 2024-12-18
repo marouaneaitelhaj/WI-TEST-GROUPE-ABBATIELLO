@@ -9,7 +9,7 @@ class User_model extends CI_Model {
             $data['mot_de_passe'] = password_hash($data['mot_de_passe'], PASSWORD_BCRYPT);
         }
 
-
+        
         if ($this->db->insert('utilisateur', $data)) {
             return $this->db->insert_id();
         } else {
