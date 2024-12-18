@@ -14,7 +14,7 @@ class Auth extends CI_Controller {
 
     public function login() {
         if ($this->session->userdata('logged_in')) {
-            redirect('dashboard');
+            redirect('users');
         }
 
         $this->load->view('auth/login');
@@ -32,7 +32,7 @@ class Auth extends CI_Controller {
             $this->session->set_userdata('user_id', $user->id);
             $this->session->set_userdata('full_name', $user->nom . ' ' . $user->prenom);
             $this->session->set_userdata('role', $user->role);
-            redirect('dashboard');
+            redirect('users');
         } else {
             $this->session->set_flashdata('error', 'Invalid login credentials');
             redirect('auth/login');

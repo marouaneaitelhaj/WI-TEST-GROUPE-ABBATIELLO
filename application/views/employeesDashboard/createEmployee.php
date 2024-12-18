@@ -8,11 +8,11 @@
    <!-- Content Header (Page header) -->
    <section class="content-header">
       <h1>
-         Utilisateur
+         Employee
          <!-- <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
-         <li><a href="#"><i class="fa fa-dashboard"></i> Utilisateur</a></li>
+         <li><a href="#"><i class="fa fa-dashboard"></i> Employee</a></li>
          <li><a href="#">Ajoute</a></li>
          <!-- <li class="active">Data tables</li> -->
       </ol>
@@ -23,7 +23,7 @@
          <div class="col-xs-12">
             <div class="box">
                <!-- <div class="box-header">
-                  <a class="box-title" href="createUser">
+                  <a class="box-title" href="createEmployee">
                   <button class="btn btn-block btn-primary">Ajouter</button>
                   </a>
                </div> -->
@@ -33,11 +33,11 @@
                      <!-- general form elements disabled -->
                      <div class="box box-warning">
                         <div class="box-header">
-                           <h3 class="box-title"> Ajouter un nouvel utilisateur</h3>
+                           <h3 class="box-title"> Ajouter un nouvel Employee</h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                           <form role="form" action="<?= site_url('dashboard/do_createUser'); ?>" method="post">
+                           <form role="form" action="<?= site_url('employeesDashboard/do_createEmployee'); ?>" method="post">
                               <!-- text input -->
                               <div class="form-group">
                                  <label>Nom</label>
@@ -48,18 +48,23 @@
                                  <input type="text" class="form-control" name="prenom" placeholder="prenom">
                               </div>
                               <div class="form-group">
-                                 <label>Login</label>
-                                 <input type="text" class="form-control" name="login" placeholder="login">
+                                 <label>Mail</label>
+                                 <input type="email" class="form-control" name="mail" placeholder="Mail">
                               </div>
                               <div class="form-group">
-                                 <label>Mot de passe</label>
-                                 <input type="password" class="form-control" name="mot_de_passe" placeholder="mot de passe">
+                                 <label>adresse</label>
+                                 <input type="text" class="form-control" name="adresse" placeholder="adresse">
                               </div>
                               <div class="form-group">
-                                 <label>Role</label>
-                                 <select class="form-control" name="role">
-                                    <option>User</option>
-                                    <option>Admin</option>
+                                 <label>Telephone</label>
+                                 <input type="text" class="form-control" name="telephone" placeholder="Telephone">
+                              </div>
+                              <div class="form-group">
+                                 <label>Poste</label>
+                                 <select class="form-control" name="poste">
+                                    <option value="Gérant">Gérant</option>
+                                    <option value="Livreur">Livreur</option>
+                                    <option value="Cuisinier">Cuisinier</option>
                                  </select>
                               </div>
                               <!-- submite btn -->

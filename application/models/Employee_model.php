@@ -42,7 +42,7 @@ class Employee_model extends CI_Model {
     }
 
     public function getEmployeesWithSearch($text = '', $by = 'name') {
-        $allowedColumns = ['nom', 'prenom', 'mail', 'adresse', 'telephone', 'poste'];
+        $allowedColumns = ['id', 'nom', 'prenom', 'mail', 'adresse', 'telephone', 'poste'];
         if (!in_array($by, $allowedColumns)) {
             log_message('error', 'Colonne invalide pour la recherche : ' . $by);
             show_error('Colonne invalide pour la recherche.', 400);

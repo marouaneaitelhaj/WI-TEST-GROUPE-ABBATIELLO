@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class UtilisateurDashboard extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -12,11 +12,11 @@ class Dashboard extends CI_Controller {
 
     public function index() {
         $utilisateurs = $this->User_model->getAllUtilisateur();
-        $this->load->view('dashboard/index', ['utilisateurs' => $utilisateurs]);
+        $this->load->view('utilisateurDashboard/index', ['utilisateurs' => $utilisateurs]);
     }
 
     public function createUser() {
-        $this->load->view('dashboard/createUser');
+        $this->load->view('utilisateurDashboard/createUser');
     }
 
     public function do_createUser() {
@@ -35,12 +35,12 @@ class Dashboard extends CI_Controller {
         ];
 
         $this->User_model->createUser($user_data);
-        redirect('dashboard/index');
+        redirect('utilisateurDashboard/index');
     }
 
     public function updateUser($id) {
         $user = $this->User_model->getUtilisateurWithSearch($id, 'id');
-        $this->load->view('dashboard/updateUser', ['user' => $user]);
+        $this->load->view('utilisateurDashboard/updateUser', ['user' => $user]);
     }
 
     public function do_updateUser($id) {
@@ -59,11 +59,11 @@ class Dashboard extends CI_Controller {
         ];
 
         $this->User_model->updateUser($user_data,$id);
-        redirect('dashboard/index');
+        redirect('utilisateurDashboard/index');
     }
 
     public function deleteUser($id) {
         $this->User_model->deleteUser($id);
-        redirect('dashboard/index');
+        redirect('utilisateurDashboard/index');
     }
 }

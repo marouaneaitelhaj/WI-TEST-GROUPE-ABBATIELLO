@@ -25,7 +25,7 @@
             <div class="col-xs-12">
               <div class="box">
 			  <div class="box-header">
-                  <a class="box-title" href="createUser">
+                  <a class="box-title" href="utilisateurDashboard/createUser">
 					<button class="btn btn-block btn-primary">Ajouter</button>
 				  </a>
                 </div><!-- /.box-header -->

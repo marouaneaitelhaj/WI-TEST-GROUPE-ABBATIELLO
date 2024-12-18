@@ -1,0 +1,73 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class EmployeesDashboard extends CI_Controller {
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('Employee_model');
+        $this->load->helper('url');
+        $this->load->library('session');
+    }
+
+    public function index() {
+        $employees = $this->Employee_model->getAllEmployees();
+        $this->load->view('employeesDashboard/index', ['employees' => $employees]);
+    }
+
+    public function createEmployee() {
+        $this->load->view('employeesDashboard/createEmployee');
+    }
+
+    public function do_createEmployee() {
+        $nom = $this->input->post('nom');
+        $prenom = $this->input->post('prenom');
+        $mail = $this->input->post('mail');
+        $adresse = $this->input->post('adresse');
+        $telephone = $this->input->post('telephone');
+        $poste = $this->input->post('poste');
+
+        $employee_data = [
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'mail' => $mail,
+            'adresse' => $adresse,
+            'telephone' => $telephone,
+            'poste' => $poste
+        ];
+
+        $this->Employee_model->createEmployee($employee_data);
+        redirect('employees');
+    }
+
+    public function updateEmployee($id) {
+        $employee = $this->Employee_model->getEmployeesWithSearch($id, 'id');
+        $this->load->view('employeesDashboard/updateEmployee', ['employee' => $employee]);
+    }
+
+    public function do_updateEmployee($id) {
+        $employeename = $this->input->post('nom');
+        $password = $this->input->post('prenom');
+        $role = $this->input->post('mail');
+        $nom = $this->input->post('adresse');
+        $prenom = $this->input->post('telephone');
+        $poste = $this->input->post('poste');
+
+        $employee_data = [
+            'nom' => $employeename,
+            'prenom' => $password,
+            'mail' => $role,
+            'adresse' => $nom,
+            'telephone' => $prenom,
+            'poste' => $poste
+        ];
+
+        $this->Employee_model->updateEmployee($employee_data,$id);
+        redirect('employees');
+    }
+
+    public function deleteEmployee($id) {
+        $this->Employee_model->deleteEmployee($id);
+        redirect('employees');
+    }
+}
