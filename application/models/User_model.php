@@ -19,7 +19,6 @@ class User_model extends CI_Model {
     }
 
     public function updateUser($data, $id) {
-
         if (isset($data['mot_de_passe'])) {
             $data['mot_de_passe'] = password_hash($data['mot_de_passe'], PASSWORD_BCRYPT);
         }
@@ -55,7 +54,7 @@ class User_model extends CI_Model {
     }
 
     public function getUtilisateurWithSearch($text = '', $by = 'name') {
-        $allowedColumns = ['nom', 'prenom', 'login', 'role'];
+        $allowedColumns = ['id','nom', 'prenom', 'login', 'role'];
         if (!in_array($by, $allowedColumns)) {
             log_message('error', 'Colonne invalide pour la recherche : ' . $by);
             show_error('Colonne invalide pour la recherche.', 400);

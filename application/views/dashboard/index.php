@@ -57,8 +57,8 @@
 		<span class="sr-only">Toggle Dropdown</span>
 	</button>
 	<ul class="dropdown-menu" role="menu">
-		<li><a href="#">Modifier</a></li>
-		<li><a href="#">supprimer</a></li>
+		<li><a href="updateUser/<?php echo $user->id; ?>">Modifier</a></li>
+		<li><a href="deleteUser/<?php echo $user->id; ?>">supprimer</a></li>
 	</ul>
 </div>
 

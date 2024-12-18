@@ -37,4 +37,33 @@ class Dashboard extends CI_Controller {
         $this->User_model->createUser($user_data);
         redirect('dashboard/index');
     }
+
+    public function updateUser($id) {
+        $user = $this->User_model->getUtilisateurWithSearch($id, 'id');
+        $this->load->view('dashboard/updateUser', ['user' => $user]);
+    }
+
+    public function do_updateUser($id) {
+        $username = $this->input->post('login');
+        $password = $this->input->post('mot_de_passe');
+        $nom = $this->input->post('nom');
+        $prenom = $this->input->post('prenom');
+        $role = $this->input->post('role');
+
+        $user_data = [
+            'login' => $username,
+            'mot_de_passe' => $password,
+            'role' => $role,
+            'nom' => $nom,
+            'prenom' => $prenom
+        ];
+
+        $this->User_model->updateUser($user_data,$id);
+        redirect('dashboard/index');
+    }
+
+    public function deleteUser($id) {
+        $this->User_model->deleteUser($id);
+        redirect('dashboard/index');
+    }
 }
