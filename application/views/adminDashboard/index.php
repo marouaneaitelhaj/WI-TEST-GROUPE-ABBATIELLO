@@ -40,11 +40,11 @@
             <table id="example2" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                    <th data-column="id" data-order="asc">id</th>
-                    <th data-column="nom" data-order="asc">nom</th>
-                    <th data-column="prenom" data-order="asc">prenom</th>
-                    <th data-column="login" data-order="asc">login</th>
-                    <th data-column="role" data-order="asc">role</th>
+                    <th style="cursor: pointer;" data-column="id" data-order="asc">id</th>
+                    <th style="cursor: pointer;" data-column="nom" data-order="asc">nom</th>
+                    <th style="cursor: pointer;" data-column="prenom" data-order="asc">prenom</th>
+                    <th style="cursor: pointer;" data-column="login" data-order="asc">login</th>
+                    <th style="cursor: pointer;" data-column="role" data-order="asc">role</th>
                     <th>action</th>
                 </tr>
               </thead>
@@ -99,11 +99,11 @@ $(document).ready(function() {
 
         // Build the table header dynamically
         thead += '<tr>';
-        thead += '<th data-column="id" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">id</th>';
-        thead += '<th data-column="nom" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">nom</th>';
-        thead += '<th data-column="prenom" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">prenom</th>';
-        thead += '<th data-column="login" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">login</th>';
-        thead += '<th data-column="role" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">role</th>';
+        thead += '<th style="cursor: pointer;" data-column="id" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">id</th>';
+        thead += '<th style="cursor: pointer;" data-column="nom" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">nom</th>';
+        thead += '<th style="cursor: pointer;" data-column="prenom" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">prenom</th>';
+        thead += '<th style="cursor: pointer;" data-column="login" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">login</th>';
+        thead += '<th style="cursor: pointer;" data-column="role" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">role</th>';
         thead += '<th>action</th>';
         thead += '</tr>';
         

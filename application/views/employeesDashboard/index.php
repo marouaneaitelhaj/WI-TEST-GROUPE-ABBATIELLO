@@ -40,13 +40,13 @@
             <table id="example2" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th data-column="id" data-order="asc">id</th>
-                  <th data-column="nom" data-order="asc">nom</th>
-                  <th data-column="prenom" data-order="asc">prenom</th>
-                  <th data-column="mail" data-order="asc">mail</th>
-                  <th data-column="adresse" data-order="asc">adresse</th>
-                  <th data-column="telephone" data-order="asc">telephone</th>
-                  <th data-column="poste" data-order="asc">poste</th>
+                  <th style="cursor: pointer;" data-column="id" data-order="asc">id</th>
+                  <th style="cursor: pointer;" data-column="nom" data-order="asc">nom</th>
+                  <th style="cursor: pointer;" data-column="prenom" data-order="asc">prenom</th>
+                  <th style="cursor: pointer;" data-column="mail" data-order="asc">mail</th>
+                  <th style="cursor: pointer;" data-column="adresse" data-order="asc">adresse</th>
+                  <th style="cursor: pointer;" data-column="telephone" data-order="asc">telephone</th>
+                  <th style="cursor: pointer;" data-column="poste" data-order="asc">poste</th>
                   <th>action</th>
                 </tr>
               </thead>
@@ -102,13 +102,13 @@
   
           // Build table header
           thead += '<tr>';
-          thead += '<th data-column="id" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">id</th>';
-          thead += '<th data-column="nom" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">nom</th>';
-          thead += '<th data-column="prenom" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">prenom</th>';
-          thead += '<th data-column="mail" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">mail</th>';
-          thead += '<th data-column="adresse" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">adresse</th>';
-          thead += '<th data-column="telephone" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">telephone</th>';
-          thead += '<th data-column="poste" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">poste</th>';
+          thead += '<th style="cursor: pointer;" data-column="id" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">id</th>';
+          thead += '<th style="cursor: pointer;" data-column="nom" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">nom</th>';
+          thead += '<th style="cursor: pointer;" data-column="prenom" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">prenom</th>';
+          thead += '<th style="cursor: pointer;" data-column="mail" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">mail</th>';
+          thead += '<th style="cursor: pointer;" data-column="adresse" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">adresse</th>';
+          thead += '<th style="cursor: pointer;" data-column="telephone" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">telephone</th>';
+          thead += '<th style="cursor: pointer;" data-column="poste" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">poste</th>';
           thead += '<th>action</th>';
           thead += '</tr>';
           

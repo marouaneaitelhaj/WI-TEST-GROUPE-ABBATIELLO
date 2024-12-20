@@ -1,5 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <ul class="sidebar-menu">
+  <?php if ($this->session->userdata('role') === 'Admin'): ?>
   <li class="active treeview">
     <a href="#">
       <i class="fa fa-dashboard"></i> <span>Utilisateur</span> <i class="fa fa-angle-left pull-right"></i>
@@ -9,6 +10,7 @@
       <li><a href="<?= base_url('createUser') ?>"><i class="fa fa-circle-o"></i> Ajouter un nouvel utilisateur</a></li>
     </ul>
   </li>
+  <?php endif; ?>
   <li class="active treeview">
     <a href="#">
       <i class="fa fa-dashboard"></i> <span>Employés</span> <i class="fa fa-angle-left pull-right"></i>

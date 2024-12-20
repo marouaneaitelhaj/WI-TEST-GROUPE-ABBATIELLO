@@ -11,6 +11,9 @@ class AdminDashboard extends CI_Controller {
         if (!$this->session->userdata('logged_in')) {
             redirect('login');
         }
+        if ($this->session->userdata('role') !== 'Admin') {
+            show_404();
+        }
     }
 
     public function index() {

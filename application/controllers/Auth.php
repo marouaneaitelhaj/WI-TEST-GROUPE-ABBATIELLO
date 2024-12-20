@@ -15,11 +15,14 @@ class Auth extends CI_Controller {
 
     public function login() {
         if ($this->session->userdata('logged_in')) {
-            redirect('users');
+            if($this->session->userdata('role') == 'admin'){
+                redirect('users');
+            }
+            redirect('employees');
         }
 
 
-        $this->form_validation->set_rules('login', 'Login', 'required|min_length[5]|max_length[12]');
+        $this->form_validation->set_rules('login', 'Login', 'required|min_length[5]|max_length[20]');
         $this->form_validation->set_rules('mot_de_passe', 'Password', 'required|min_length[8]|max_length[20]');
         
 
@@ -42,6 +45,7 @@ class Auth extends CI_Controller {
             $this->session->set_userdata('logged_in', true);
             $this->session->set_userdata('user_id', $user->id);
             $this->session->set_userdata('login', $user->login);
+            $this->session->set_userdata('full_name', $user->nom . ' ' . $user->prenom);
             $this->session->set_userdata('role', $user->role);
             redirect('users');
         } else {
@@ -53,7 +57,7 @@ class Auth extends CI_Controller {
 
 
     public function register() {
-        $this->form_validation->set_rules('login', 'Login', 'required|min_length[5]|max_length[12]');
+        $this->form_validation->set_rules('login', 'Login', 'required|min_length[5]|max_length[20]');
         $this->form_validation->set_rules('mot_de_passe', 'Password', 'required|min_length[8]|max_length[20]');
         $this->form_validation->set_rules('nom', 'First Name', 'required|min_length[2]|max_length[50]');
         $this->form_validation->set_rules('prenom', 'Last Name', 'required|min_length[2]|max_length[50]');
