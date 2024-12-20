@@ -127,7 +127,7 @@ $(document).ready(function() {
           tbody += '</button>';
           tbody += '<ul class="dropdown-menu" role="menu">';
           tbody += '<li><a href="updateUser/' + user.id + '">Modifier</a></li>';
-          tbody += '<li><a href="deleteUser/' + user.id + '">Supprimer</a></li>';
+          tbody += '<li><a href="#" class="delete-user" data-id="'+user.id+'">Supprimer</a></li>';
           tbody += '</ul>';
           tbody += '</div>';
           tbody += '</td>';

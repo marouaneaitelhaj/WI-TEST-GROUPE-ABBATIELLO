@@ -9,7 +9,7 @@ class AdminDashboard extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->library('form_validation');
-        $this->load->library('security');
+        $this->load->helper('security');
         if (!$this->session->userdata('logged_in')) {
             redirect('login');
         }

@@ -133,7 +133,7 @@
             tbody += '</button>';
             tbody += '<ul class="dropdown-menu" role="menu">';
             tbody += '<li><a href="updateEmployee/' + employee.id + '">Modifier</a></li>';
-            tbody += '<li><a href="deleteEmployee/' + employee.id + '">Supprimer</a></li>';
+            tbody += '<li><a href="" class="delete-user" data-id="'+employee.id+'">Supprimer</a></li>';
             tbody += '</ul>';
             tbody += '</div>';
             tbody += '</td>';
