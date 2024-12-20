@@ -47,7 +47,10 @@ class Auth extends CI_Controller {
             $this->session->set_userdata('login', $user->login);
             $this->session->set_userdata('full_name', $user->nom . ' ' . $user->prenom);
             $this->session->set_userdata('role', $user->role);
-            redirect('users');
+            if($user->role == 'Admin'){
+                redirect('users');
+            }
+            redirect('employees');
         } else {
             $this->session->set_flashdata('error', 'Invalid login credentials');
             $this->load->view('auth/login');

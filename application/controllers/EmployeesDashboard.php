@@ -36,12 +36,12 @@ class EmployeesDashboard extends CI_Controller {
     }
 
     public function do_createEmployee() {
-        $nom = $this->input->post('nom');
-        $prenom = $this->input->post('prenom');
-        $mail = $this->input->post('mail');
-        $adresse = $this->input->post('adresse');
-        $telephone = $this->input->post('telephone');
-        $poste = $this->input->post('poste');
+        $nom = $this->security->xss_clean($this->input->post('nom'));
+        $prenom = $this->security->xss_clean($this->input->post('prenom'));
+        $mail = $this->security->xss_clean($this->input->post('mail'));
+        $adresse = $this->security->xss_clean($this->input->post('adresse'));
+        $telephone = $this->security->xss_clean($this->input->post('telephone'));
+        $poste = $this->security->xss_clean($this->input->post('poste'));
 
         $employee_data = [
             'nom' => $nom,
@@ -52,8 +52,13 @@ class EmployeesDashboard extends CI_Controller {
             'poste' => $poste
         ];
 
-        $this->Employee_model->createEmployee($employee_data);
-        redirect('employees');
+        if ($this->Employee_model->createEmployee($employee_data)) {
+            $this->session->set_flashdata('success', 'Employé créé avec succès');
+            redirect('employees');
+        }else{
+            $this->session->set_flashdata('error', 'Une erreur s\'est produite lors de la création de l\'employé');
+            $this->load->view('employeesDashboard/createEmployee');
+        }
     }
 
     public function updateEmployee($id) {
@@ -67,7 +72,7 @@ class EmployeesDashboard extends CI_Controller {
         $this->form_validation->set_rules('poste', 'Poste', 'required|max_length[50]');
 
         if ($this->form_validation->run() == FALSE) {
-            $employee = $this->Employee_model->getEmployeeById($id, 'id');
+            $employee = $this->Employee_model->getEmployeeById($id);
             $this->load->view('employeesDashboard/updateEmployee', ['employee' => $employee]);
         } else {
             $this->do_updateEmployee($id);
@@ -75,32 +80,41 @@ class EmployeesDashboard extends CI_Controller {
     }
 
     public function do_updateEmployee($id) {
-        $employeename = $this->input->post('nom');
-        $password = $this->input->post('prenom');
-        $role = $this->input->post('mail');
-        $nom = $this->input->post('adresse');
-        $prenom = $this->input->post('telephone');
-        $poste = $this->input->post('poste');
+        $nom = $this->security->xss_clean($this->input->post('nom'));
+        $prenom = $this->security->xss_clean($this->input->post('prenom'));
+        $mail = $this->security->xss_clean($this->input->post('mail'));
+        $adresse = $this->security->xss_clean($this->input->post('adresse'));
+        $telephone = $this->security->xss_clean($this->input->post('telephone'));
+        $poste = $this->security->xss_clean($this->input->post('poste'));
 
         $employee_data = [
-            'nom' => $employeename,
-            'prenom' => $password,
-            'mail' => $role,
-            'adresse' => $nom,
-            'telephone' => $prenom,
+            'nom' => $nom,
+            'prenom' => $prenom,
+            'mail' => $mail,
+            'adresse' => $adresse,
+            'telephone' => $telephone,
             'poste' => $poste
         ];
 
-        $this->Employee_model->updateEmployee($employee_data,$id);
-        redirect('employees');
+        if($this->Employee_model->updateEmployee($employee_data,$id)){
+            $this->session->set_flashdata('success', 'Employé mis à jour avec succès');
+            redirect('employees');
+        }else{
+            $this->session->set_flashdata('error', 'Une erreur s\'est produite lors de la mise à jour de l\'employé');
+            $this->load->view('employeesDashboard/updateEmployee');
+        }
     }
 
     public function deleteEmployee($id) {
-        $this->Employee_model->deleteEmployee($id);
-        if ($this->input->is_ajax_request()) {
-            echo json_encode(['success' => true]);
+        if($this->Employee_model->deleteEmployee($id)){
+            if ($this->input->is_ajax_request()) {
+                echo json_encode(['success' => true]);
+                exit;
+            } else {
+                redirect('employees');
+            }
         } else {
-            redirect('employees');
+            return show_error('Erreur lors de la suppression de l\'employé', 500);
         }
     }
 

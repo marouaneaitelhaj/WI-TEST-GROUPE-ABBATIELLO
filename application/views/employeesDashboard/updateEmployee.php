@@ -44,6 +44,16 @@
                                     <p><?php echo $this->session->flashdata('error'); ?></p>
                                  <?php endif; ?>
                               </div>
+                              <div style="color: green">
+                                 <?php if ($this->session->flashdata('success')): ?>
+                                    <p><?php echo $this->session->flashdata('success'); ?></p>
+                                 <?php endif; ?>
+                              </div>
+                              <div style="color: green">
+                                 <?php if ($this->session->flashdata('success')): ?>
+                                    <p><?php echo $this->session->flashdata('success'); ?></p>
+                                 <?php endif; ?>
+                              </div>
                               <?php echo form_open('employeesDashboard/updateEmployee/' . $employee->id); ?>
                                 <!-- text input -->
                                 <div class="form-group">

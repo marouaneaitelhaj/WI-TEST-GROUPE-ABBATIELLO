@@ -36,6 +36,11 @@
                 <p><?php echo $this->session->flashdata('error'); ?></p>
             <?php endif; ?>
           </div>
+          <div style="color: green">
+              <?php if ($this->session->flashdata('success')): ?>
+                  <p><?php echo $this->session->flashdata('success'); ?></p>
+              <?php endif; ?>
+          </div>
           <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" />
           <div class="form-group has-feedback">
             <input type="text" name="login" class="form-control" placeholder="Login"  value="<?= set_value('login'); ?>" required  oninput="this.value = this.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();"/>
