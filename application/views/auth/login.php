@@ -23,7 +23,7 @@
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="<?= base_url('index.php/admin'); ?>"><b>Salvatore</b>RH</a>
+        <a href="#"><b>Salvatore</b>RH</a>
       </div><!-- /.login-logo -->
 
       <div class="login-box-body">
