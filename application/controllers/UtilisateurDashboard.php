@@ -35,7 +35,7 @@ class UtilisateurDashboard extends CI_Controller {
         ];
 
         $this->User_model->createUser($user_data);
-        redirect('utilisateurDashboard/index');
+        redirect('users');
     }
 
     public function updateUser($id) {
@@ -59,11 +59,11 @@ class UtilisateurDashboard extends CI_Controller {
         ];
 
         $this->User_model->updateUser($user_data,$id);
-        redirect('utilisateurDashboard/index');
+        redirect('users');
     }
 
     public function deleteUser($id) {
         $this->User_model->deleteUser($id);
-        redirect('utilisateurDashboard/index');
+        redirect('users');
     }
 }

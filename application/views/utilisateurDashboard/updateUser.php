@@ -37,7 +37,7 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                           <form role="form" action="<?= site_url('dashboard/do_updateUser/'); ?><?= $user[0]->id; ?>" method="post">
+                           <form role="form" action="<?= site_url('utilisateurDashboard/do_updateUser/'); ?><?= $user[0]->id; ?>" method="post">
                               <!-- text input -->
                               <div class="form-group">
                                  <label>Nom</label>
