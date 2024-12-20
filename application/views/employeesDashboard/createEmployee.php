@@ -35,43 +35,50 @@
                         <div class="box-header">
                            <h3 class="box-title"> Ajouter un nouvel Employee</h3>
                         </div>
+                        <div style="color: red">
+                           <?php if (validation_errors()): ?>  
+                              <p><?php echo validation_errors(); ?></p>
+                           <?php elseif ($this->session->flashdata('error')): ?>
+                              <p><?php echo $this->session->flashdata('error'); ?></p>
+                           <?php endif; ?>
+                        </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                           <form role="form" action="<?= site_url('employeesDashboard/do_createEmployee'); ?>" method="post">
-                              <!-- text input -->
-                              <div class="form-group">
-                                 <label>Nom</label>
-                                 <input type="text" class="form-control" name="nom" placeholder="nom">
-                              </div>
-                              <div class="form-group">
-                                 <label>Prenom</label>
-                                 <input type="text" class="form-control" name="prenom" placeholder="prenom">
-                              </div>
-                              <div class="form-group">
-                                 <label>Mail</label>
-                                 <input type="email" class="form-control" name="mail" placeholder="Mail">
-                              </div>
-                              <div class="form-group">
-                                 <label>adresse</label>
-                                 <input type="text" class="form-control" name="adresse" placeholder="adresse">
-                              </div>
-                              <div class="form-group">
-                                 <label>Telephone</label>
-                                 <input type="text" class="form-control" name="telephone" placeholder="Telephone">
-                              </div>
-                              <div class="form-group">
-                                 <label>Poste</label>
-                                 <select class="form-control" name="poste">
-                                    <option value="Gérant">Gérant</option>
-                                    <option value="Livreur">Livreur</option>
-                                    <option value="Cuisinier">Cuisinier</option>
-                                 </select>
-                              </div>
-                              <!-- submite btn -->
+                              <?php echo form_open('employeesDashboard/createEmployee'); ?>
+                                <!-- text input -->
                                 <div class="form-group">
-                                 <button type="submit" class="btn btn-primary">Ajouter</button>
+                                  <label>Nom</label>
+                                  <input type="text" class="form-control" name="nom" placeholder="nom" value="<?php echo set_value('nom'); ?>">
                                 </div>
-                           </form>
+                                <div class="form-group">
+                                  <label>Prenom</label>
+                                  <input type="text" class="form-control" name="prenom" placeholder="prenom" value="<?php echo set_value('prenom'); ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label>Mail</label>
+                                  <input type="email" class="form-control" name="mail" placeholder="Mail" value="<?php echo set_value('mail'); ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label>adresse</label>
+                                  <input type="text" class="form-control" name="adresse" placeholder="adresse" value="<?php echo set_value('adresse'); ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label>Telephone</label>
+                                  <input type="text" class="form-control" name="telephone" placeholder="Telephone" value="<?php echo set_value('telephone'); ?>">
+                                </div>
+                                <div class="form-group">
+                                  <label>Poste</label>
+                                  <select class="form-control" name="poste">
+                                    <option value="Gérant" <?php echo set_select('poste', 'Gérant'); ?>>Gérant</option>
+                                    <option value="Livreur" <?php echo set_select('poste', 'Livreur'); ?>>Livreur</option>
+                                    <option value="Cuisinier" <?php echo set_select('poste', 'Cuisinier'); ?>>Cuisinier</option>
+                                  </select>
+                                </div>
+                                <!-- submit btn -->
+                                 <div class="form-group">
+                                  <button type="submit" class="btn btn-primary">Ajouter</button>
+                                 </div>
+                              <?php echo form_close(); ?>
                         </div>
                         <!-- /.box-body -->
                      </div>

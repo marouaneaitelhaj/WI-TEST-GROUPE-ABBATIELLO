@@ -19,7 +19,20 @@ class EmployeesDashboard extends CI_Controller {
     }
 
     public function createEmployee() {
-        $this->load->view('employeesDashboard/createEmployee');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('nom', 'Nom', 'required|max_length[50]');
+        $this->form_validation->set_rules('prenom', 'Prenom', 'required|max_length[50]');
+        $this->form_validation->set_rules('mail', 'Mail', 'required|valid_email|max_length[100]');
+        $this->form_validation->set_rules('adresse', 'Adresse', 'required|max_length[255]');
+        $this->form_validation->set_rules('telephone', 'Telephone', 'required|max_length[15]');
+        $this->form_validation->set_rules('poste', 'Poste', 'required|max_length[50]');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('employeesDashboard/createEmployee');
+        } else {
+            $this->do_createEmployee();
+        }
     }
 
     public function do_createEmployee() {
@@ -44,8 +57,21 @@ class EmployeesDashboard extends CI_Controller {
     }
 
     public function updateEmployee($id) {
-        $employee = $this->Employee_model->getEmployeesWithSearch($id, 'id');
-        $this->load->view('employeesDashboard/updateEmployee', ['employee' => $employee]);
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('nom', 'Nom', 'required|max_length[50]');
+        $this->form_validation->set_rules('prenom', 'Prenom', 'required|max_length[50]');
+        $this->form_validation->set_rules('mail', 'Mail', 'required|valid_email|max_length[100]');
+        $this->form_validation->set_rules('adresse', 'Adresse', 'required|max_length[255]');
+        $this->form_validation->set_rules('telephone', 'Telephone', 'required|max_length[15]');
+        $this->form_validation->set_rules('poste', 'Poste', 'required|max_length[50]');
+
+        if ($this->form_validation->run() == FALSE) {
+            $employee = $this->Employee_model->getEmployeesWithSearch($id, 'id');
+            $this->load->view('employeesDashboard/updateEmployee', ['employee' => $employee]);
+        } else {
+            $this->do_updateEmployee($id);
+        }
     }
 
     public function do_updateEmployee($id) {
