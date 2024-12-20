@@ -67,7 +67,7 @@ class EmployeesDashboard extends CI_Controller {
         $this->form_validation->set_rules('poste', 'Poste', 'required|max_length[50]');
 
         if ($this->form_validation->run() == FALSE) {
-            $employee = $this->Employee_model->getEmployeesWithSearch($id, 'id');
+            $employee = $this->Employee_model->getEmployeeById($id, 'id');
             $this->load->view('employeesDashboard/updateEmployee', ['employee' => $employee]);
         } else {
             $this->do_updateEmployee($id);

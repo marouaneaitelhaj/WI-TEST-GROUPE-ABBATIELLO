@@ -64,7 +64,7 @@ class UtilisateurDashboard extends CI_Controller {
         $this->form_validation->set_rules('role', 'Role', 'required|min_length[4]|max_length[20]');
 
         if ($this->form_validation->run() == FALSE) {
-            $user = $this->User_model->getUtilisateurWithSearch($id, 'id');
+            $user = $this->User_model->getUtilisateurById($id, 'id');
             $this->load->view('utilisateurDashboard/updateUser', ['user' => $user]);
             return;
         } else {

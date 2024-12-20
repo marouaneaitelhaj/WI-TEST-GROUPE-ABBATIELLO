@@ -96,4 +96,14 @@ class User_model extends CI_Model {
             return null;
         }
     }
+
+    public function getUtilisateurById($id) {
+        $query = $this->db->select('*')->from('utilisateur')->where('id', $id)->get();
+        if ($query) {
+            return $query->row();
+        } else {
+            log_message('error', 'Échec de la récupération de l\'utilisateur avec l\'ID ' . $id . ': ' . $this->db->last_query());
+            return null;
+        }
+    }
 }

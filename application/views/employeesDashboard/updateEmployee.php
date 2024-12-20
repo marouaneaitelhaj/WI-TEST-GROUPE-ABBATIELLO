@@ -44,32 +44,32 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                              <?php echo form_open('employeesDashboard/updateEmployee/' . $employee[0]->id); ?>
+                              <?php echo form_open('employeesDashboard/updateEmployee/' . $employee->id); ?>
                                 <!-- text input -->
                                 <div class="form-group">
                                   <label>Nom</label>
-                                  <input type="text" class="form-control" value="<?= set_value('nom', $employee[0]->nom); ?>" name="nom" placeholder="nom">
+                                  <input type="text" class="form-control" value="<?= set_value('nom', $employee->nom); ?>" name="nom" placeholder="nom">
                                 </div>
                                 <div class="form-group">
                                   <label>Prenom</label>
-                                  <input type="text" class="form-control" value="<?= set_value('prenom', $employee[0]->prenom); ?>" name="prenom" placeholder="prenom">
+                                  <input type="text" class="form-control" value="<?= set_value('prenom', $employee->prenom); ?>" name="prenom" placeholder="prenom">
                                 </div>
                                 <div class="form-group">
                                   <label>Mail</label>
-                                  <input type="email" class="form-control" name="mail" value="<?= set_value('mail', $employee[0]->mail); ?>" placeholder="mail">
+                                  <input type="email" class="form-control" name="mail" value="<?= set_value('mail', $employee->mail); ?>" placeholder="mail">
                                 </div>
                                 <div class="form-group">
                                   <label>adresse</label>
-                                  <input type="text" class="form-control" name="adresse" value="<?= set_value('adresse', $employee[0]->adresse); ?>" placeholder="adresse">
+                                  <input type="text" class="form-control" name="adresse" value="<?= set_value('adresse', $employee->adresse); ?>" placeholder="adresse">
                                 </div>
                                 <div class="form-group">
                                   <label>telephone</label>
-                                  <input type="text" class="form-control" name="telephone" value="<?= set_value('telephone', $employee[0]->telephone); ?>" placeholder="telephone">
+                                  <input type="text" class="form-control" name="telephone" value="<?= set_value('telephone', $employee->telephone); ?>" placeholder="telephone">
                                 </div>
                                 <div class="form-group">
                                   <label>poste</label>
                                   <select class="form-control" name="poste">
-                                    <option hidden selected><?= set_value('poste', $employee[0]->poste); ?></option>
+                                    <option hidden selected><?= set_value('poste', $employee->poste); ?></option>
                                     <option value="Gérant">Gérant</option>
                                     <option value="Livreur">Livreur</option>
                                     <option value="Cuisinier">Cuisinier</option>

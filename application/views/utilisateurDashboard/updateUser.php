@@ -44,19 +44,19 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                              <?php echo form_open('utilisateurDashboard/updateUser/' . $user[0]->id); ?>
+                              <?php echo form_open('utilisateurDashboard/updateUser/' . $user->id); ?>
                                 <!-- text input -->
                                 <div class="form-group">
                                   <label>Nom</label>
-                                  <input type="text" class="form-control" value="<?= set_value('nom', $user[0]->nom); ?>" name="nom" placeholder="nom">
+                                  <input type="text" class="form-control" value="<?= set_value('nom', $user->nom); ?>" name="nom" placeholder="nom">
                                 </div>
                                 <div class="form-group">
                                   <label>Prenom</label>
-                                  <input type="text" class="form-control" value="<?= set_value('prenom', $user[0]->prenom); ?>" name="prenom" placeholder="prenom">
+                                  <input type="text" class="form-control" value="<?= set_value('prenom', $user->prenom); ?>" name="prenom" placeholder="prenom">
                                 </div>
                                 <div class="form-group">
                                   <label>Login</label>
-                                  <input type="text" class="form-control" name="login" value="<?= set_value('login', $user[0]->login); ?>" placeholder="login">
+                                  <input type="text" class="form-control" name="login" value="<?= set_value('login', $user->login); ?>" placeholder="login">
                                 </div>
                                 <div class="form-group">
                                   <label>Mot de passe</label>
@@ -65,7 +65,7 @@
                                 <div class="form-group">
                                   <label>Role</label>
                                   <select class="form-control" name="role">
-                                    <option hidden selected><?= set_value('role', $user[0]->role); ?></option>
+                                    <option hidden selected><?= set_value('role', $user->role); ?></option>
                                     <option>User</option>
                                     <option>Admin</option>
                                   </select>
