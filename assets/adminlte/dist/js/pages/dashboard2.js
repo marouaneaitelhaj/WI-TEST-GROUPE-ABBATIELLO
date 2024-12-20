@@ -113,8 +113,8 @@ $(function () {
     },
     {
       value: 400,
-      color: "#f39c12",
-      highlight: "#f39c12",
+      color: "#E40F18",
+      highlight: "#E40F18",
       label: "FireFox"
     },
     {
@@ -125,8 +125,8 @@ $(function () {
     },
     {
       value: 300,
-      color: "#3c8dbc",
-      highlight: "#3c8dbc",
+      color: "#E40F18",
+      highlight: "#E40F18",
       label: "Opera"
     },
     {

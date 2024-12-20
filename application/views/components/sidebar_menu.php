@@ -1,6 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 <ul class="sidebar-menu">
-  <li class="header">MAIN NAVIGATION</li>
   <li class="active treeview">
     <a href="#">
       <i class="fa fa-dashboard"></i> <span>Utilisateur</span> <i class="fa fa-angle-left pull-right"></i>

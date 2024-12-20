@@ -35,16 +35,16 @@
                         <div class="box-header">
                            <h3 class="box-title"> Ajouter un nouvel utilisateur</h3>
                         </div>
-                        <div style="color: red">
-                           <?php if (validation_errors()): ?>  
-                              <p><?php echo validation_errors(); ?></p>
-                           <?php elseif ($this->session->flashdata('error')): ?>
-                              <p><?php echo $this->session->flashdata('error'); ?></p>
-                           <?php endif; ?>
-                        </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                              <?php echo form_open('adminDashboard/createUser'); ?>
+                           <?php echo form_open('adminDashboard/createUser'); ?>
+                                 <div style="color: red">
+                                    <?php if (validation_errors()): ?>  
+                                       <p><?php echo validation_errors(); ?></p>
+                                    <?php elseif ($this->session->flashdata('error')): ?>
+                                       <p><?php echo $this->session->flashdata('error'); ?></p>
+                                    <?php endif; ?>
+                                 </div>
                                 <!-- text input -->
                                 <div class="form-group">
                                   <label>Nom</label>

@@ -11,7 +11,7 @@ $(function () {
     "font-size": "16px",
     "z-index": "99999",
     cursor: "pointer",
-    color: "#3c8dbc",
+    color: "#E40F18",
     "box-shadow": "0 1px 3px rgba(0,0,0,0.1)"
   }).html("<i class='fa fa-gear'></i>").addClass("no-print");
 
@@ -60,8 +60,8 @@ $(function () {
   var skin_blue =
           $("<li />", {style: "float:left; width: 50%; padding: 5px;"})
           .append("<a href='#' onclick='change_skin(\"skin-blue\")' style='display: block; box-shadow: -1px 1px 2px rgba(0,0,0,0.0);' class='clearfix full-opacity-hover'>"
-                  + "<div><span style='display:block; width: 20%; float: left; height: 10px; background: #367fa9;'></span><span class='bg-light-blue' style='display:block; width: 80%; float: left; height: 10px;'></span></div>"
-                  + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #222d32;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
+                  + "<div><span style='display:block; width: 20%; float: left; height: 10px; background: #D32F2F;'></span><span class='bg-light-blue' style='display:block; width: 80%; float: left; height: 10px;'></span></div>"
+                  + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #D32F2F;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
                   + "<p class='text-center'>Skin Blue</p>"
                   + "</a>");
   skins_list.append(skin_blue);
@@ -77,7 +77,7 @@ $(function () {
           $("<li />", {style: "float:left; width: 50%; padding: 5px;"})
           .append("<a href='#' onclick='change_skin(\"skin-purple\")' style='display: block; box-shadow: -1px 1px 2px rgba(0,0,0,0.0);' class='clearfix full-opacity-hover'>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 10px;' class='bg-purple-active'></span><span class='bg-purple' style='display:block; width: 80%; float: left; height: 10px;'></span></div>"
-                  + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #222d32;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
+                  + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #D32F2F;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
                   + "<p class='text-center'>Skin Purple</p>"
                   + "</a>");
   skins_list.append(skin_purple);
@@ -85,7 +85,7 @@ $(function () {
           $("<li />", {style: "float:left; width: 50%; padding: 5px;"})
           .append("<a href='#' onclick='change_skin(\"skin-green\")' style='display: block; box-shadow: -1px 1px 2px rgba(0,0,0,0.0);' class='clearfix full-opacity-hover'>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 10px;' class='bg-green-active'></span><span class='bg-green' style='display:block; width: 80%; float: left; height: 10px;'></span></div>"
-                  + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #222d32;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
+                  + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #D32F2F;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
                   + "<p class='text-center'>Skin Green</p>"
                   + "</a>");
   skins_list.append(skin_green);
@@ -93,7 +93,7 @@ $(function () {
           $("<li />", {style: "float:left; width: 50%; padding: 5px;"})
           .append("<a href='#' onclick='change_skin(\"skin-red\")' style='display: block; box-shadow: -1px 1px 2px rgba(0,0,0,0.0);' class='clearfix full-opacity-hover'>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 10px;' class='bg-red-active'></span><span class='bg-red' style='display:block; width: 80%; float: left; height: 10px;'></span></div>"
-                  + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #222d32;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
+                  + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #D32F2F;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
                   + "<p class='text-center'>Skin Red</p>"
                   + "</a>");
   skins_list.append(skin_red);
@@ -101,7 +101,7 @@ $(function () {
           $("<li />", {style: "float:left; width: 50%; padding: 5px;"})
           .append("<a href='#' onclick='change_skin(\"skin-yellow\")' style='display: block; box-shadow: -1px 1px 2px rgba(0,0,0,0.0);' class='clearfix full-opacity-hover'>"
                   + "<div><span style='display:block; width: 20%; float: left; height: 10px;' class='bg-yellow-active'></span><span class='bg-yellow' style='display:block; width: 80%; float: left; height: 10px;'></span></div>"
-                  + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #222d32;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
+                  + "<div><span style='display:block; width: 20%; float: left; height: 40px; background: #D32F2F;'></span><span style='display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;'></span></div>"
                   + "<p class='text-center'>Skin Yellow</p>"
                   + "</a>");
   skins_list.append(skin_yellow);

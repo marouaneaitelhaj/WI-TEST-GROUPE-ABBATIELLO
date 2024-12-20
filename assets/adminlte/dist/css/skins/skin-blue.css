@@ -3,7 +3,7 @@
  * ----------
  */
 .skin-blue .main-header .navbar {
-  background-color: #3c8dbc;
+  background-color: #E40F18;
 }
 .skin-blue .main-header .navbar .nav > li > a {
   color: #ffffff;
@@ -31,7 +31,7 @@
   color: #fff;
 }
 .skin-blue .main-header .navbar .sidebar-toggle:hover {
-  background-color: #367fa9;
+  background-color: #D32F2F;
 }
 @media (max-width: 767px) {
   .skin-blue .main-header .navbar .dropdown-menu li.divider {
@@ -41,11 +41,11 @@
     color: #fff;
   }
   .skin-blue .main-header .navbar .dropdown-menu li a:hover {
-    background: #367fa9;
+    background: #D32F2F;
   }
 }
 .skin-blue .main-header .logo {
-  background-color: #367fa9;
+  background-color: #D32F2F;
   color: #ffffff;
   border-bottom: 0px solid transparent;
 }
@@ -53,10 +53,10 @@
   color: #ffffff;
 }
 .skin-blue .main-header .logo:hover {
-  background: #357ca5;
+  background: #D32F2F;
 }
 .skin-blue .main-header li.user-header {
-  background-color: #3c8dbc;
+  background-color: #E40F18;
 }
 .skin-blue .content-header {
   background: transparent;
@@ -67,7 +67,7 @@
 }
 .skin-blue .sidebar-menu > li.header {
   color: #4b646f;
-  background: #1a2226;
+  background: #D32F2F;
 }
 .skin-blue .sidebar-menu > li > a {
   border-left: 3px solid transparent;
@@ -76,26 +76,26 @@
 .skin-blue .sidebar-menu > li > a:hover,
 .skin-blue .sidebar-menu > li.active > a {
   color: #ffffff;
-  background: #1e282c;
-  border-left-color: #3c8dbc;
+  background: #D32F2F;
+  border-left-color: #E40F18;
 }
 .skin-blue .sidebar-menu > li > .treeview-menu {
   margin: 0 1px;
-  background: #2c3b41;
+  background: #D32F2F;
 }
 .skin-blue .wrapper,
 .skin-blue .main-sidebar,
 .skin-blue .left-side {
-  background: #222d32;
+  background: #D32F2F;
 }
 .skin-blue .sidebar a {
-  color: #b8c7ce;
+  color: white;
 }
 .skin-blue .sidebar a:hover {
   text-decoration: none;
 }
 .skin-blue .treeview-menu > li > a {
-  color: #8aa4af;
+  color: white;
 }
 .skin-blue .treeview-menu > li.active > a,
 .skin-blue .treeview-menu > li > a:hover {
@@ -139,7 +139,7 @@
   border-bottom-left-radius: 0 !important;
 }
 .skin-blue.layout-top-nav .main-header > .logo {
-  background-color: #3c8dbc;
+  background-color: #E40F18;
   color: #ffffff;
   border-bottom: 0px solid transparent;
 }

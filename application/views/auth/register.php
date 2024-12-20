@@ -17,7 +17,7 @@
   <body class="register-page">
     <div class="register-box">
       <div class="register-logo">
-        <a href="#"><b>Admin</b>LTE</a>
+        <a href="#"><b>Salvatore</b>RH</a>
       </div>
 
       <div class="register-box-body">

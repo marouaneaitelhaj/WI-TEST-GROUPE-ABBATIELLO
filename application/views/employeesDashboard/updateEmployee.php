@@ -35,15 +35,15 @@
                         <div class="box-header">
                            <h3 class="box-title"> Modifier  employee</h3>
                         </div>
-                        <div style="color: red">
-                           <?php if (validation_errors()): ?>  
-                              <p><?php echo validation_errors(); ?></p>
-                           <?php elseif ($this->session->flashdata('error')): ?>
-                              <p><?php echo $this->session->flashdata('error'); ?></p>
-                           <?php endif; ?>
-                        </div>
                         <!-- /.box-header -->
                         <div class="box-body">
+                              <div style="color: red">
+                                 <?php if (validation_errors()): ?>  
+                                    <p><?php echo validation_errors(); ?></p>
+                                 <?php elseif ($this->session->flashdata('error')): ?>
+                                    <p><?php echo $this->session->flashdata('error'); ?></p>
+                                 <?php endif; ?>
+                              </div>
                               <?php echo form_open('employeesDashboard/updateEmployee/' . $employee->id); ?>
                                 <!-- text input -->
                                 <div class="form-group">
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="form-group">
                                   <label>telephone</label>
-                                  <input type="text" class="form-control" name="telephone" value="<?= set_value('telephone', $employee->telephone); ?>" placeholder="telephone">
+                                  <input type="text" class="form-control" name="telephone" value="<?= set_value('telephone', $employee->telephone); ?>" placeholder="+1 234 567 8901">
                                 </div>
                                 <div class="form-group">
                                   <label>poste</label>

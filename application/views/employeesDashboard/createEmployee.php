@@ -35,15 +35,15 @@
                         <div class="box-header">
                            <h3 class="box-title"> Ajouter un nouvel Employee</h3>
                         </div>
-                        <div style="color: red">
-                           <?php if (validation_errors()): ?>  
-                              <p><?php echo validation_errors(); ?></p>
-                           <?php elseif ($this->session->flashdata('error')): ?>
-                              <p><?php echo $this->session->flashdata('error'); ?></p>
-                           <?php endif; ?>
-                        </div>
                         <!-- /.box-header -->
                         <div class="box-body">
+                              <div style="color: red">
+                                 <?php if (validation_errors()): ?>  
+                                    <p><?php echo validation_errors(); ?></p>
+                                 <?php elseif ($this->session->flashdata('error')): ?>
+                                    <p><?php echo $this->session->flashdata('error'); ?></p>
+                                 <?php endif; ?>
+                              </div>
                               <?php echo form_open('employeesDashboard/createEmployee'); ?>
                                 <!-- text input -->
                                 <div class="form-group">
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="form-group">
                                   <label>Telephone</label>
-                                  <input type="text" class="form-control" name="telephone" placeholder="Telephone" value="<?php echo set_value('telephone'); ?>">
+                                  <input type="text" class="form-control" name="telephone" placeholder="+1 234 567 8901" value="<?php echo set_value('telephone'); ?>">
                                 </div>
                                 <div class="form-group">
                                   <label>Poste</label>

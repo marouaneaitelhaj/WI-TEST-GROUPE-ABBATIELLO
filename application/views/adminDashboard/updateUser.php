@@ -35,15 +35,15 @@
                         <div class="box-header">
                            <h3 class="box-title"> Modifier un nouvel utilisateur</h3>
                         </div>
-                        <div style="color: red">
-                           <?php if (validation_errors()): ?>  
-                              <p><?php echo validation_errors(); ?></p>
-                           <?php elseif ($this->session->flashdata('error')): ?>
-                              <p><?php echo $this->session->flashdata('error'); ?></p>
-                           <?php endif; ?>
-                        </div>
                         <!-- /.box-header -->
                         <div class="box-body">
+                              <div style="color: red">
+                                 <?php if (validation_errors()): ?>  
+                                    <p><?php echo validation_errors(); ?></p>
+                                 <?php elseif ($this->session->flashdata('error')): ?>
+                                    <p><?php echo $this->session->flashdata('error'); ?></p>
+                                 <?php endif; ?>
+                              </div>
                               <?php echo form_open('adminDashboard/updateUser/' . $user->id); ?>
                                 <!-- text input -->
                                 <div class="form-group">

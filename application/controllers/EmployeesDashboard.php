@@ -25,7 +25,7 @@ class EmployeesDashboard extends CI_Controller {
         $this->form_validation->set_rules('prenom', 'Prenom', 'required|max_length[50]');
         $this->form_validation->set_rules('mail', 'Mail', 'required|valid_email|max_length[100]');
         $this->form_validation->set_rules('adresse', 'Adresse', 'required|max_length[255]');
-        $this->form_validation->set_rules('telephone', 'Telephone', 'required|max_length[15]');
+        $this->form_validation->set_rules('telephone', 'Telephone', 'required|regex_match[/^\+?[0-9]{10,15}$/]');
         $this->form_validation->set_rules('poste', 'Poste', 'required|max_length[50]');
 
         if ($this->form_validation->run() == FALSE) {
@@ -63,7 +63,7 @@ class EmployeesDashboard extends CI_Controller {
         $this->form_validation->set_rules('prenom', 'Prenom', 'required|max_length[50]');
         $this->form_validation->set_rules('mail', 'Mail', 'required|valid_email|max_length[100]');
         $this->form_validation->set_rules('adresse', 'Adresse', 'required|max_length[255]');
-        $this->form_validation->set_rules('telephone', 'Telephone', 'required|max_length[15]');
+        $this->form_validation->set_rules('telephone', 'Telephone', 'required|regex_match[/^\+?[0-9]{10,15}$/]');
         $this->form_validation->set_rules('poste', 'Poste', 'required|max_length[50]');
 
         if ($this->form_validation->run() == FALSE) {
