@@ -65,7 +65,7 @@
                       </button>
                       <ul class="dropdown-menu" role="menu">
                         <li><a href="updateUser/<?php echo $user->id; ?>">Modifier</a></li>
-                        <li><a href="deleteUser/<?php echo $user->id; ?>">supprimer</a></li>
+                        <li><a href="#" class="delete-user" data-id="<?php echo $user->id; ?>">supprimer</a></li>
                       </ul>
                     </div>
                   </td>
@@ -89,7 +89,7 @@
 $(document).ready(function() {
   function fetchData(search = '', sort_by = '', sort_order = '') {
     $.ajax({
-      url: "http://localhost:8000/index.php/utilisateurDashboard/searchUsers",
+      url: "http://localhost:8000/index.php/adminDashboard/searchUsers",
       method: "GET",
       data: { search: search, sort_by: sort_by, sort_order: sort_order },
       success: function(data) {
@@ -155,6 +155,44 @@ $(document).ready(function() {
     var sort_order = $(this).data('order');
     var search = $('input[name="search"]').val();
     fetchData(search, sort_by, sort_order);
+  });
+});
+$(document).on('click', '.delete-user', function(e) {
+  e.preventDefault();
+  var userId = $(this).data('id');
+  var row = $(this).closest('tr');
+
+  Swal.fire({
+    title: 'Êtes-vous sûr?',
+    text: "Vous ne pourrez pas revenir en arrière!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Oui, supprimez-le!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+        url: 'deleteUser/' + userId,
+        method: 'DELETE',
+        success: function(response) {
+          if (JSON.parse(response).success) {
+            Swal.fire(
+              'Supprimé!',
+              'L\'utilisateur a été supprimé.',
+              'success'
+            );
+            row.remove();
+          } else {
+            Swal.fire(
+              'Erreur!',
+              'Une erreur s\'est produite lors de la suppression de l\'utilisateur.',
+              'error'
+            );
+          }
+        }
+      });
+    }
   });
 });
 </script>

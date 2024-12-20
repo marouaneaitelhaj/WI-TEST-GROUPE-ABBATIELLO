@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UtilisateurDashboard extends CI_Controller {
+class AdminDashboard extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -15,7 +15,7 @@ class UtilisateurDashboard extends CI_Controller {
 
     public function index() {
         $utilisateurs = $this->User_model->getAllUtilisateur();
-        $this->load->view('utilisateurDashboard/index', ['utilisateurs' => $utilisateurs]);
+        $this->load->view('adminDashboard/index', ['utilisateurs' => $utilisateurs]);
     }
 
     public function searchUsers() {
@@ -37,7 +37,7 @@ class UtilisateurDashboard extends CI_Controller {
         $this->form_validation->set_rules('role', 'Role', 'required|min_length[4]|max_length[20]');
 
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('utilisateurDashboard/createUser');
+            $this->load->view('adminDashboard/createUser');
             return;
         }else {
             $this->do_createUser();
@@ -74,7 +74,7 @@ class UtilisateurDashboard extends CI_Controller {
 
         if ($this->form_validation->run() == FALSE) {
             $user = $this->User_model->getUtilisateurById($id, 'id');
-            $this->load->view('utilisateurDashboard/updateUser', ['user' => $user]);
+            $this->load->view('adminDashboard/updateUser', ['user' => $user]);
             return;
         } else {
             $this->do_updateUser($id);
@@ -102,6 +102,10 @@ class UtilisateurDashboard extends CI_Controller {
 
     public function deleteUser($id) {
         $this->User_model->deleteUser($id);
-        redirect('users');
+        if ($this->input->is_ajax_request()) {
+            echo json_encode(['success' => true]);
+        } else {
+            redirect('users');
+        }
     }
 }

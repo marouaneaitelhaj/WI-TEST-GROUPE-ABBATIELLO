@@ -44,7 +44,7 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                              <?php echo form_open('utilisateurDashboard/createUser'); ?>
+                              <?php echo form_open('adminDashboard/createUser'); ?>
                                 <!-- text input -->
                                 <div class="form-group">
                                   <label>Nom</label>
@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="form-group">
                                   <label>Login</label>
-                                  <input type="text" class="form-control" name="login" placeholder="login" value="<?php echo set_value('login'); ?>">
+                                  <input type="text" oninput="this.value = this.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();" class="form-control" name="login" placeholder="login" value="<?php echo set_value('login'); ?>">
                                 </div>
                                 <div class="form-group">
                                   <label>Mot de passe</label>

@@ -97,7 +97,11 @@ class EmployeesDashboard extends CI_Controller {
 
     public function deleteEmployee($id) {
         $this->Employee_model->deleteEmployee($id);
-        redirect('employees');
+        if ($this->input->is_ajax_request()) {
+            echo json_encode(['success' => true]);
+        } else {
+            redirect('employees');
+        }
     }
 
     public function searchEmployees() {

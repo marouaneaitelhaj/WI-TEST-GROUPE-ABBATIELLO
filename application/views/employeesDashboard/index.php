@@ -51,15 +51,15 @@
                 </tr>
               </thead>
               <tbody>
-                <?php foreach($employees as $key=>$user): ?>
+                <?php foreach($employees as $key=>$employe): ?>
                 <tr>
-                  <td><?php echo $user->id; ?></td>
-                  <td><?php echo $user->nom; ?></td>
-                  <td><?php echo $user->prenom; ?></td>
-                  <td><?php echo $user->mail; ?></td>
-                  <td><?php echo $user->adresse; ?></td>
-                  <td><?php echo $user->telephone; ?></td>
-                  <td><?php echo $user->poste; ?></td>
+                  <td><?php echo $employe->id; ?></td>
+                  <td><?php echo $employe->nom; ?></td>
+                  <td><?php echo $employe->prenom; ?></td>
+                  <td><?php echo $employe->mail; ?></td>
+                  <td><?php echo $employe->adresse; ?></td>
+                  <td><?php echo $employe->telephone; ?></td>
+                  <td><?php echo $employe->poste; ?></td>
                   <td>
                     <div class="btn-group">
                       <button type="button" class="btn btn-success">Action</button>
@@ -68,8 +68,8 @@
                       <span class="sr-only">Toggle Dropdown</span>
                       </button>
                       <ul class="dropdown-menu" role="menu">
-                        <li><a href="updateEmployee/<?php echo $user->id; ?>">Modifier</a></li>
-                        <li><a href="deleteEmployee/<?php echo $user->id; ?>">supprimer</a></li>
+                        <li><a href="updateEmployee/<?php echo $employe->id; ?>">Modifier</a></li>
+                        <li><a href="" class="delete-user" data-id="<?php echo $employe->id; ?>">supprimer</a></li>
                       </ul>
                     </div>
                   </td>
@@ -113,7 +113,6 @@
           thead += '</tr>';
           
           $('thead').html(thead);
-          console.log(employees);
           
           // Generate tbody content
           employees.employees.forEach(function(employee) {
@@ -162,6 +161,41 @@
       var search = $('input[name="search"]').val();
       fetchData(search, sort_by, sort_order);
     });
+    $('table').on('click', '.delete-user', function(e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        $.ajax({
+          url: 'http://localhost:8000/index.php/employeesDashboard/deleteEmployee/' + id,
+          method: 'DELETE',
+          success: function(response) {
+            Swal.fire(
+              'Deleted!',
+              'Employee has been deleted.',
+              'success'
+            );
+            fetchData();
+          },
+          error: function(xhr, status, error) {
+            Swal.fire(
+              'Error!',
+              'An error occurred while deleting the employee.',
+              'error'
+            );
+          }
+        });
+      }
+    });
+  });
   });
 </script>
 <!-- /.content-wrapper -->

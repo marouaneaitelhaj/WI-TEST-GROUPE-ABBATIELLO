@@ -44,7 +44,7 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                              <?php echo form_open('utilisateurDashboard/updateUser/' . $user->id); ?>
+                              <?php echo form_open('adminDashboard/updateUser/' . $user->id); ?>
                                 <!-- text input -->
                                 <div class="form-group">
                                   <label>Nom</label>
