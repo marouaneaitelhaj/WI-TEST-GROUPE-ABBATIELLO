@@ -99,4 +99,13 @@ class EmployeesDashboard extends CI_Controller {
         $this->Employee_model->deleteEmployee($id);
         redirect('employees');
     }
+
+    public function searchEmployees() {
+        $search = $this->input->get('search');
+        $sort_by = $this->input->get('sort_by') ? $this->input->get('sort_by') : 'id';
+        $sort_order = $this->input->get('sort_order') ? $this->input->get('sort_order') : 'asc';
+
+        $employees = $this->Employee_model->searchEmployees($search, $sort_by, $sort_order);
+        echo json_encode(['employees' => $employees]);
+    }
 }

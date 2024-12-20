@@ -73,4 +73,44 @@ class Employee_model extends CI_Model {
             return null;
         }
     }
+
+    public function searchEmployees($search, $sort_by = 'nom', $sort_order = 'asc') {
+        $allowedSortColumns = ['id', 'nom', 'prenom', 'mail', 'adresse', 'telephone', 'poste'];
+        $allowedSortOrders = ['asc', 'desc'];
+
+        if (!in_array($sort_by, $allowedSortColumns)) {
+            log_message('error', 'Colonne de tri invalide : ' . $sort_by);
+            show_error('Colonne de tri invalide.', 400);
+            return [];
+        }
+
+        if (!in_array($sort_order, $allowedSortOrders)) {
+            log_message('error', 'Ordre de tri invalide : ' . $sort_order);
+            show_error('Ordre de tri invalide.', 400);
+            return [];
+        }
+
+        $this->db->select('*')->from('employees');
+
+        if (!empty($search)) {
+            $this->db->group_start()
+                     ->like('nom', $search)
+                     ->or_like('prenom', $search)
+                     ->or_like('mail', $search)
+                     ->or_like('adresse', $search)
+                     ->or_like('telephone', $search)
+                     ->or_like('poste', $search)
+                     ->group_end();
+        }
+
+        $this->db->order_by($sort_by, $sort_order);
+
+        $query = $this->db->get();
+        if ($query) {
+            return $query->result();
+        } else {
+            log_message('error', 'Échec de la recherche des employés : ' . $this->db->last_query());
+            return [];
+        }
+    }
 }
