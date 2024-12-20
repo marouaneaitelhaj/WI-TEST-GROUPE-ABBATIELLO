@@ -18,6 +18,15 @@ class UtilisateurDashboard extends CI_Controller {
         $this->load->view('utilisateurDashboard/index', ['utilisateurs' => $utilisateurs]);
     }
 
+    public function searchUsers() {
+        $search_term = $this->input->get('search');
+        $sort_by = $this->input->get('sort_by') ? $this->input->get('sort_by') : 'id';
+        $sort_order = $this->input->get('sort_order') ? $this->input->get('sort_order') : 'asc';
+        
+        $utilisateurs = $this->User_model->searchAndSortUsers($search_term, $sort_by, $sort_order);
+        echo json_encode(['utilisateurs' => $utilisateurs]);
+    }
+
     public function createUser() {
         $this->load->library('form_validation');
 

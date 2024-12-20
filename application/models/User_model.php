@@ -106,4 +106,35 @@ class User_model extends CI_Model {
             return null;
         }
     }
+
+    public function searchAndSortUsers($searchText = '', $sortBy = 'id', $sortOrder = 'ASC') {
+        $allowedSortColumns = ['id', 'nom', 'prenom', 'login', 'role'];
+
+        if (!in_array($sortBy, $allowedSortColumns)) {
+            log_message('error', 'Colonne invalide pour le tri : ' . $sortBy);
+            show_error('Colonne invalide pour le tri.', 400);
+            return [];
+        }
+
+        $this->db->select('*')->from('utilisateur');
+
+        if (!empty($searchText)) {
+            $this->db->group_start();
+            $this->db->like('id', $searchText);
+            $this->db->or_like('nom', $searchText);
+            $this->db->or_like('prenom', $searchText);
+            $this->db->or_like('login', $searchText);
+            $this->db->group_end();
+        }
+
+        $this->db->order_by($sortBy, $sortOrder);
+
+        $query = $this->db->get();
+        if ($query) {
+            return $query->result();
+        } else {
+            log_message('error', 'Échec de la récupération des utilisateurs avec la recherche et le tri : ' . $this->db->last_query());
+            return [];
+        }
+    }
 }

@@ -9,7 +9,7 @@
       </div>
       <div class="pull-left info">
         <p>
-            <?= $this->session->userdata('full_name') ?>
+            <?= $this->session->userdata('login') ?>
         </p>
       </div>
     </div>

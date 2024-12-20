@@ -41,7 +41,7 @@ class Auth extends CI_Controller {
         if ($user) {
             $this->session->set_userdata('logged_in', true);
             $this->session->set_userdata('user_id', $user->id);
-            $this->session->set_userdata('full_name', $user->nom . ' ' . $user->prenom);
+            $this->session->set_userdata('login', $user->login);
             $this->session->set_userdata('role', $user->role);
             redirect('users');
         } else {
