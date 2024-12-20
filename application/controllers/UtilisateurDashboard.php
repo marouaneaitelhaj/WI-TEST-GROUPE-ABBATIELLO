@@ -8,6 +8,9 @@ class UtilisateurDashboard extends CI_Controller {
         $this->load->model('User_model');
         $this->load->helper('url');
         $this->load->library('session');
+        if (!$this->session->userdata('logged_in')) {
+            redirect('login');
+        }
     }
 
     public function index() {

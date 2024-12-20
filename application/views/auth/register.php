@@ -34,7 +34,7 @@
         <?php echo form_open('auth/register'); ?>
           <!-- Login -->
           <div class="form-group has-feedback">
-            <input type="text" name="login" id="login" class="form-control" placeholder="Login" required />
+            <input type="text" name="login" id="login" class="form-control" placeholder="Login" required oninput="this.value = this.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();" />
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
 
