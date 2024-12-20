@@ -22,16 +22,16 @@
 
       <div class="register-box-body">
         <p class="login-box-msg">Register a new membership</p>
-
         <!-- Flash Error Message -->
-        <?php if ($this->session->flashdata('error')): ?>
-          <p style="color: red; text-align: center;">
-            <?= $this->session->flashdata('error'); ?>
-          </p>
-        <?php endif; ?>
-
+        <div style="color: red">
+          <?php if (validation_errors()): ?>  
+            <p><?php echo validation_errors(); ?></p>
+          <?php elseif ($this->session->flashdata('error')): ?>
+              <p><?php echo $this->session->flashdata('error'); ?></p>
+          <?php endif; ?>
+        </div>
         <!-- Form -->
-        <form action="<?= site_url('auth/do_register'); ?>" method="post">
+        <?php echo form_open('auth/register'); ?>
           <!-- Login -->
           <div class="form-group has-feedback">
             <input type="text" name="login" id="login" class="form-control" placeholder="Login" required />
@@ -62,7 +62,7 @@
               <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
             </div>
           </div>
-        </form>
+          <?php echo form_close(); ?>
         
         <a href="<?= site_url('auth/login'); ?>" class="text-center">I already have a account</a>
       </div><!-- /.form-box -->

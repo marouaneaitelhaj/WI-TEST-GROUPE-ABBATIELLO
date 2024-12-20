@@ -29,7 +29,7 @@
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
         <div style="color: red">
-          <?php if (validation_errors()): ?>
+          <?php if (validation_errors()): ?>  
             <p><?php echo validation_errors(); ?></p>
           <?php elseif ($this->session->flashdata('error')): ?>
               <p><?php echo $this->session->flashdata('error'); ?></p>
@@ -38,11 +38,11 @@
         <?php echo form_open('auth/login'); ?>
           <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" />
           <div class="form-group has-feedback">
-            <input type="text" name="login" class="form-control" placeholder="Login" />
+            <input type="text" name="login" class="form-control" placeholder="Login" required />
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" name="mot_de_passe" class="form-control" placeholder="Password" />
+            <input type="password" name="mot_de_passe" class="form-control" placeholder="Password" required />
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">

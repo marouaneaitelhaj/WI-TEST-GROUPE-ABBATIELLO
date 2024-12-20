@@ -19,8 +19,8 @@ class Auth extends CI_Controller {
         }
 
 
-        $this->form_validation->set_rules('login', 'Login', 'required');
-        $this->form_validation->set_rules('mot_de_passe', 'Password', 'required');
+        $this->form_validation->set_rules('login', 'Login', 'required|min_length[5]|max_length[12]');
+        $this->form_validation->set_rules('mot_de_passe', 'Password', 'required|min_length[8]|max_length[20]');
         
 
         if ($this->form_validation->run() == FALSE) {
@@ -47,12 +47,23 @@ class Auth extends CI_Controller {
         } else {
             $this->session->set_flashdata('error', 'Invalid login credentials');
             $this->load->view('auth/login');
+            $this->session->unset_userdata('error');
         }
     }
 
 
     public function register() {
-        $this->load->view('auth/register');
+        $this->form_validation->set_rules('login', 'Login', 'required|min_length[5]|max_length[12]');
+        $this->form_validation->set_rules('mot_de_passe', 'Password', 'required|min_length[8]|max_length[20]');
+        $this->form_validation->set_rules('nom', 'First Name', 'required|min_length[2]|max_length[50]');
+        $this->form_validation->set_rules('prenom', 'Last Name', 'required|min_length[2]|max_length[50]');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('auth/register');
+            return;
+        } else {
+            $this->do_register();
+        }
     }
 
     public function do_register() {
@@ -73,9 +84,11 @@ class Auth extends CI_Controller {
         if ($this->User_model->createUser($user_data)) {
             $this->session->set_flashdata('success', 'Registration successful');
             redirect('auth/login');
+            $this->session->unset_userdata('success');
         } else {
             $this->session->set_flashdata('error', 'Failed to register user');
-            redirect('auth/register');
+            $this->load->view('auth/register');
+            $this->session->unset_userdata('error');
         }
     }
 
