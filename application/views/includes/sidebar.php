@@ -3,7 +3,7 @@
   <!-- sidebar: style can be found in sidebar.less -->
   <section class="sidebar">
     <!-- Sidebar user panel -->
-    <div class="user-panel">
+    <div class="user-panel" style="display: flex;align-items: center;"> 
       <div class="pull-left image">
         <img src="<?= base_url('assets/adminlte/dist/img/user2-160x160.jpg')?>" class="img-circle" alt="User Image" />
       </div>
