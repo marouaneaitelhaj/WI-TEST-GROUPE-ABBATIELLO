@@ -45,4 +45,24 @@ class Migrate extends CI_Controller
 		}
 	}
 
+	public function rollback($version = null)
+	{
+		if (empty($version)) {
+			$version = $this->migration->latest();
+		}
+
+		if ($this->migration->version($version) === FALSE)
+		{
+			show_error($this->migration->error_string());
+		}
+	}
+
+	public function latest()
+	{
+		if ($this->migration->latest() === FALSE)
+		{
+			show_error($this->migration->error_string());
+		}
+	}
+
 }

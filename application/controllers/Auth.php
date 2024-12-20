@@ -8,6 +8,7 @@ class Auth extends CI_Controller {
         $this->load->model('User_model');
         $this->load->helper('url');
         $this->load->library('session');
+        $this->load->library('form_validation');
     }
 
 
@@ -17,7 +18,17 @@ class Auth extends CI_Controller {
             redirect('users');
         }
 
-        $this->load->view('auth/login');
+
+        $this->form_validation->set_rules('login', 'Login', 'required');
+        $this->form_validation->set_rules('mot_de_passe', 'Password', 'required');
+        
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('auth/login');
+            return;
+        }else{
+            $this->do_login();
+        }
     }
 
 
@@ -35,7 +46,7 @@ class Auth extends CI_Controller {
             redirect('users');
         } else {
             $this->session->set_flashdata('error', 'Invalid login credentials');
-            redirect('auth/login');
+            $this->load->view('auth/login');
         }
     }
 

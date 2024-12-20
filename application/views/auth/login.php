@@ -28,11 +28,15 @@
 
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
-        <?php if ($this->session->flashdata('error')): ?>
-            <p style="color: red;"><?php echo $this->session->flashdata('error'); ?></p>
-        <?php endif; ?>
-
-        <form action="<?php echo site_url('auth/do_login'); ?>" method="post">
+        <div style="color: red">
+          <?php if (validation_errors()): ?>
+            <p><?php echo validation_errors(); ?></p>
+          <?php elseif ($this->session->flashdata('error')): ?>
+              <p><?php echo $this->session->flashdata('error'); ?></p>
+          <?php endif; ?>
+        </div>
+        <?php echo form_open('auth/login'); ?>
+          <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" />
           <div class="form-group has-feedback">
             <input type="text" name="login" class="form-control" placeholder="Login" />
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -53,7 +57,7 @@
               <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
             </div><!-- /.col -->
           </div>
-        </form>
+        <?php echo form_close(); ?>
 
         <a href="<?php echo site_url('auth/register'); ?>" class="text-center">Register</a>
       </div><!-- /.login-box-body -->
