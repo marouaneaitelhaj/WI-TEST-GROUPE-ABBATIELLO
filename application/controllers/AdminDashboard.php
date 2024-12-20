@@ -8,6 +8,8 @@ class AdminDashboard extends CI_Controller {
         $this->load->model('User_model');
         $this->load->helper('url');
         $this->load->library('session');
+        $this->load->library('form_validation');
+        $this->load->library('security');
         if (!$this->session->userdata('logged_in')) {
             redirect('login');
         }
@@ -48,11 +50,11 @@ class AdminDashboard extends CI_Controller {
     }
 
     public function do_createUser() {
-        $username = $this->input->post('login');
-        $password = $this->input->post('mot_de_passe');
-        $nom = $this->input->post('nom');
-        $prenom = $this->input->post('prenom');
-        $role = $this->input->post('role');
+        $username = $this->security->xss_clean($this->input->post('login'));
+        $password = $this->security->xss_clean($this->input->post('mot_de_passe'));
+        $nom = $this->security->xss_clean($this->input->post('nom'));
+        $prenom = $this->security->xss_clean($this->input->post('prenom'));
+        $role = $this->security->xss_clean($this->input->post('role'));
 
         $user_data = [
             'login' => $username,
@@ -85,11 +87,11 @@ class AdminDashboard extends CI_Controller {
     }
 
     public function do_updateUser($id) {
-        $username = $this->input->post('login');
-        $password = $this->input->post('mot_de_passe');
-        $nom = $this->input->post('nom');
-        $prenom = $this->input->post('prenom');
-        $role = $this->input->post('role');
+        $username = $this->security->xss_clean($this->input->post('login'));
+        $password = $this->security->xss_clean($this->input->post('mot_de_passe'));
+        $nom = $this->security->xss_clean($this->input->post('nom'));
+        $prenom = $this->security->xss_clean($this->input->post('prenom'));
+        $role = $this->security->xss_clean($this->input->post('role'));
 
         $user_data = [
             'login' => $username,

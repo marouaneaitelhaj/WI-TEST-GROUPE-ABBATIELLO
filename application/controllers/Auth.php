@@ -36,17 +36,19 @@ class Auth extends CI_Controller {
 
 
     public function do_login() {
-        $login = $this->input->post('login');
-        $password = $this->input->post('mot_de_passe');
+        $login = $this->security->xss_clean($this->input->post('login'));
+        $password = $this->security->xss_clean($this->input->post('mot_de_passe'));
 
         $user = $this->User_model->validate_login($login, $password);
 
         if ($user) {
-            $this->session->set_userdata('logged_in', true);
-            $this->session->set_userdata('user_id', $user->id);
-            $this->session->set_userdata('login', $user->login);
-            $this->session->set_userdata('full_name', $user->nom . ' ' . $user->prenom);
-            $this->session->set_userdata('role', $user->role);
+            $this->session->set_userdata([
+                'logged_in' => true,
+                'user_id' => $user->id,
+                'login' => $user->login,
+                'full_name' => $user->nom . ' ' . $user->prenom,
+                'role' => $user->role
+            ]);
             if($user->role == 'Admin'){
                 redirect('users');
             }
@@ -54,7 +56,6 @@ class Auth extends CI_Controller {
         } else {
             $this->session->set_flashdata('error', 'Invalid login credentials');
             $this->load->view('auth/login');
-            $this->session->unset_userdata('error');
         }
     }
 
@@ -74,10 +75,10 @@ class Auth extends CI_Controller {
     }
 
     public function do_register() {
-        $username = $this->input->post('login');
-        $password = $this->input->post('mot_de_passe');
-        $nom = $this->input->post('nom');
-        $prenom = $this->input->post('prenom');
+        $username = $this->security->xss_clean($this->input->post('login'));
+        $password = $this->security->xss_clean($this->input->post('mot_de_passe'));
+        $nom = $this->security->xss_clean($this->input->post('nom'));
+        $prenom = $this->security->xss_clean($this->input->post('prenom'));
 
         $user_data = [
             'login' => $username,
