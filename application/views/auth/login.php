@@ -38,7 +38,7 @@
         <?php echo form_open('auth/login'); ?>
           <input type="hidden" name="<?= $this->security->get_csrf_token_name(); ?>" value="<?= $this->security->get_csrf_hash(); ?>" />
           <div class="form-group has-feedback">
-            <input type="text" name="login" class="form-control" placeholder="Login" required  oninput="this.value = this.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();"/>
+            <input type="text" name="login" class="form-control" placeholder="Login"  value="<?= set_value('login'); ?>" required  oninput="this.value = this.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();"/>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">

@@ -35,39 +35,46 @@
                         <div class="box-header">
                            <h3 class="box-title"> Modifier un nouvel utilisateur</h3>
                         </div>
+                        <div style="color: red">
+                           <?php if (validation_errors()): ?>  
+                              <p><?php echo validation_errors(); ?></p>
+                           <?php elseif ($this->session->flashdata('error')): ?>
+                              <p><?php echo $this->session->flashdata('error'); ?></p>
+                           <?php endif; ?>
+                        </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                           <form role="form" action="<?= site_url('utilisateurDashboard/do_updateUser/'); ?><?= $user[0]->id; ?>" method="post">
-                              <!-- text input -->
-                              <div class="form-group">
-                                 <label>Nom</label>
-                                 <input type="text" class="form-control" value="<?= $user[0]->nom; ?>" name="nom" placeholder="nom">
-                              </div>
-                              <div class="form-group">
-                                 <label>Prenom</label>
-                                 <input type="text" class="form-control" value="<?= $user[0]->prenom; ?>" name="prenom" placeholder="prenom">
-                              </div>
-                              <div class="form-group">
-                                 <label>Login</label>
-                                 <input type="text" class="form-control" name="login" value="<?= $user[0]->login; ?>" placeholder="login">
-                              </div>
-                              <div class="form-group">
-                                 <label>Mot de passe</label>
-                                 <input type="password" class="form-control" name="mot_de_passe" placeholder="mot de passe">
-                              </div>
-                              <div class="form-group">
-                                 <label>Role</label>
-                                 <select class="form-control" name="role" value="<?= $user[0]->role; ?>">
-                                    <option hidden selected><?= $user[0]->role; ?></option>
+                              <?php echo form_open('utilisateurDashboard/updateUser/' . $user[0]->id); ?>
+                                <!-- text input -->
+                                <div class="form-group">
+                                  <label>Nom</label>
+                                  <input type="text" class="form-control" value="<?= set_value('nom', $user[0]->nom); ?>" name="nom" placeholder="nom">
+                                </div>
+                                <div class="form-group">
+                                  <label>Prenom</label>
+                                  <input type="text" class="form-control" value="<?= set_value('prenom', $user[0]->prenom); ?>" name="prenom" placeholder="prenom">
+                                </div>
+                                <div class="form-group">
+                                  <label>Login</label>
+                                  <input type="text" class="form-control" name="login" value="<?= set_value('login', $user[0]->login); ?>" placeholder="login">
+                                </div>
+                                <div class="form-group">
+                                  <label>Mot de passe</label>
+                                  <input type="password" class="form-control" name="mot_de_passe" placeholder="mot de passe">
+                                </div>
+                                <div class="form-group">
+                                  <label>Role</label>
+                                  <select class="form-control" name="role">
+                                    <option hidden selected><?= set_value('role', $user[0]->role); ?></option>
                                     <option>User</option>
                                     <option>Admin</option>
-                                 </select>
-                              </div>
-                              <!-- submite btn -->
-                                <div class="form-group">
-                                 <button type="submit" class="btn btn-primary">Modifier</button>
+                                  </select>
                                 </div>
-                           </form>
+                                <!-- submit btn -->
+                                 <div class="form-group">
+                                  <button type="submit" class="btn btn-primary">Modifier</button>
+                                 </div>
+                              <?php echo form_close(); ?>
                         </div>
                         <!-- /.box-body -->
                      </div>

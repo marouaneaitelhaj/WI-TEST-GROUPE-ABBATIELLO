@@ -34,7 +34,7 @@
         <?php echo form_open('auth/register'); ?>
           <!-- Login -->
           <div class="form-group has-feedback">
-            <input type="text" name="login" id="login" class="form-control" placeholder="Login" required oninput="this.value = this.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();" />
+            <input type="text" name="login" id="login" class="form-control" placeholder="Login" required value="<?= set_value('login'); ?>" oninput="this.value = this.value.replace(/[^a-zA-Z0-9_]/g, '').toLowerCase();" />
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
 
@@ -46,13 +46,13 @@
 
           <!-- Nom -->
           <div class="form-group has-feedback">
-            <input type="text" name="nom" id="nom" class="form-control" placeholder="Nom" required />
+            <input type="text" name="nom" id="nom" class="form-control" placeholder="Nom" required value="<?= set_value('nom'); ?>" />
             <span class="glyphicon glyphicon-tag form-control-feedback"></span>
           </div>
 
           <!-- Prenom -->
           <div class="form-group has-feedback">
-            <input type="text" name="prenom" id="prenom" class="form-control" placeholder="Prenom" required />
+            <input type="text" name="prenom" id="prenom" class="form-control" placeholder="Prenom" required value="<?= set_value('prenom'); ?>" />
             <span class="glyphicon glyphicon-tag form-control-feedback"></span>
           </div>
 
@@ -62,7 +62,7 @@
               <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
             </div>
           </div>
-          <?php echo form_close(); ?>
+        <?php echo form_close(); ?>
         
         <a href="<?= site_url('auth/login'); ?>" class="text-center">I already have a account</a>
       </div><!-- /.form-box -->

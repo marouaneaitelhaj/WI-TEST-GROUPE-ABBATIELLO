@@ -19,7 +19,20 @@ class UtilisateurDashboard extends CI_Controller {
     }
 
     public function createUser() {
-        $this->load->view('utilisateurDashboard/createUser');
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('login', 'Login', 'required|min_length[5]|max_length[20]');
+        $this->form_validation->set_rules('mot_de_passe', 'Mot de passe', 'required|min_length[8]|max_length[20]');
+        $this->form_validation->set_rules('nom', 'Nom', 'required|min_length[2]|max_length[50]');
+        $this->form_validation->set_rules('prenom', 'Prenom', 'required|min_length[2]|max_length[50]');
+        $this->form_validation->set_rules('role', 'Role', 'required|min_length[4]|max_length[20]');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('utilisateurDashboard/createUser');
+            return;
+        }else {
+            $this->do_createUser();
+        }
     }
 
     public function do_createUser() {
@@ -42,8 +55,21 @@ class UtilisateurDashboard extends CI_Controller {
     }
 
     public function updateUser($id) {
-        $user = $this->User_model->getUtilisateurWithSearch($id, 'id');
-        $this->load->view('utilisateurDashboard/updateUser', ['user' => $user]);
+        $this->load->library('form_validation');
+
+        $this->form_validation->set_rules('login', 'Login', 'required|min_length[5]|max_length[20]');
+        $this->form_validation->set_rules('mot_de_passe', 'Mot de passe', 'required|min_length[8]|max_length[20]');
+        $this->form_validation->set_rules('nom', 'Nom', 'required|min_length[2]|max_length[50]');
+        $this->form_validation->set_rules('prenom', 'Prenom', 'required|min_length[2]|max_length[50]');
+        $this->form_validation->set_rules('role', 'Role', 'required|min_length[4]|max_length[20]');
+
+        if ($this->form_validation->run() == FALSE) {
+            $user = $this->User_model->getUtilisateurWithSearch($id, 'id');
+            $this->load->view('utilisateurDashboard/updateUser', ['user' => $user]);
+            return;
+        } else {
+            $this->do_updateUser($id);
+        }
     }
 
     public function do_updateUser($id) {
