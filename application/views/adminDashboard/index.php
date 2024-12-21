@@ -40,7 +40,7 @@
             <table id="example2" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                    <th style="cursor: pointer;" data-column="id" data-order="asc">id</th>
+                    <th style="cursor: pointer;" data-column="id" data-order="asc"><i class="fa fa-arrow-down"></i>&nbsp;id</th>
                     <th style="cursor: pointer;" data-column="nom" data-order="asc">nom</th>
                     <th style="cursor: pointer;" data-column="prenom" data-order="asc">prenom</th>
                     <th style="cursor: pointer;" data-column="login" data-order="asc">login</th>
@@ -97,13 +97,24 @@ $(document).ready(function() {
         var tbody = '';
         var thead = '';
 
-        // Build the table header dynamically
+        getOrderData = (dataColumn) => {
+            if (sort_by === dataColumn) {
+              return sort_order === 'asc' ? 'desc' : 'asc';
+            }
+            return 'asc';
+          };
+        getIcon = (dataColumn) => {
+            if (sort_by === dataColumn) {
+              return sort_order === 'asc' ? '<i class="fa fa-arrow-down"></i>&nbsp;' : '<i class="fa fa-arrow-up"></i>&nbsp;';
+            }
+            return '';
+        };
         thead += '<tr>';
-        thead += '<th style="cursor: pointer;" data-column="id" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">id</th>';
-        thead += '<th style="cursor: pointer;" data-column="nom" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">nom</th>';
-        thead += '<th style="cursor: pointer;" data-column="prenom" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">prenom</th>';
-        thead += '<th style="cursor: pointer;" data-column="login" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">login</th>';
-        thead += '<th style="cursor: pointer;" data-column="role" data-order="' + (sort_order === 'asc' ? 'desc' : 'asc') + '">role</th>';
+        thead += '<th style="cursor: pointer;" data-column="id" data-order="' + getOrderData('id') + '">'+getIcon('id')+'id</th>';
+        thead += '<th style="cursor: pointer;" data-column="nom" data-order="' + getOrderData('nom') + '">'+getIcon('nom')+'nom</th>';
+        thead += '<th style="cursor: pointer;" data-column="prenom" data-order="' + getOrderData('prenom') + '">'+getIcon('prenom')+'prenom</th>';
+        thead += '<th style="cursor: pointer;" data-column="login" data-order="' + getOrderData('login') + '">'+getIcon('login')+'login</th>';
+        thead += '<th style="cursor: pointer;" data-column="role" data-order="' + getOrderData('role') + '">'+getIcon('role')+'role</th>';
         thead += '<th>action</th>';
         thead += '</tr>';
         

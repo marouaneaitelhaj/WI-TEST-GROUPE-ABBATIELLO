@@ -72,7 +72,7 @@ class AdminDashboard extends CI_Controller {
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('login', 'Login', 'required|min_length[5]|max_length[20]');
-        $this->form_validation->set_rules('mot_de_passe', 'Mot de passe', 'required|min_length[8]|max_length[20]');
+        $this->form_validation->set_rules('mot_de_passe', 'Mot de passe', 'min_length[8]|max_length[20]');
         $this->form_validation->set_rules('nom', 'Nom', 'required|min_length[2]|max_length[50]');
         $this->form_validation->set_rules('prenom', 'Prenom', 'required|min_length[2]|max_length[50]');
         $this->form_validation->set_rules('role', 'Role', 'required|min_length[4]|max_length[20]');
