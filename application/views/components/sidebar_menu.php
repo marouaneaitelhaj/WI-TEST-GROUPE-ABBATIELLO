@@ -3,7 +3,7 @@
   <?php if ($this->session->userdata('role') === 'Admin'): ?>
   <li class="active treeview">
     <a href="#">
-      <i class="fa fa-dashboard"></i> <span>Utilisateur</span> <i class="fa fa-angle-left pull-right"></i>
+      <i class="fa fa-users"></i> <span>Utilisateur</span> <i class="fa fa-angle-left pull-right"></i>
     </a>
     <ul class="treeview-menu">
       <li class="active"><a href="<?= base_url('users') ?>"><i class="fa fa-circle-o"></i> Afficher tous les utilisateurs</a></li>
@@ -13,7 +13,7 @@
   <?php endif; ?>
   <li class="active treeview">
     <a href="#">
-      <i class="fa fa-dashboard"></i> <span>Employés</span> <i class="fa fa-angle-left pull-right"></i>
+      <i class="fa fa-users"></i> <span>Employés</span> <i class="fa fa-angle-left pull-right"></i>
     </a>
     <ul class="treeview-menu">
       <li class="active"><a href="<?= base_url('employees') ?>"><i class="fa fa-circle-o"></i> Afficher tous les Employés</a></li>

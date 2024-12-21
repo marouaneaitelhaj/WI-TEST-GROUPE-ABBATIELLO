@@ -9,6 +9,9 @@ class Auth extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->library('form_validation');
+        if ($this->session->userdata('logged_in')) {
+            $this->load_user_data($this->session->userdata('user_id'));
+        }
     }
 
 
@@ -104,5 +107,20 @@ class Auth extends CI_Controller {
     public function logout() {
         $this->session->sess_destroy(); // Destroy session
         redirect('auth/login');
+    }
+
+    public function load_user_data($user_id) {
+        $user = $this->User_model->getUtilisateurById($user_id);
+        if ($user) {
+            $this->session->set_userdata([
+                'user_id' => $user->id,
+                'login' => $user->login,
+                'full_name' => $user->nom . ' ' . $user->prenom,
+                'role' => $user->role
+            ]);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

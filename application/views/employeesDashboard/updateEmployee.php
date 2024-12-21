@@ -12,7 +12,7 @@
          <!-- <small>advanced tables</small> -->
       </h1>
       <ol class="breadcrumb">
-         <li><a href="#"><i class="fa fa-dashboard"></i> Employee</a></li>
+         <li><a href="#"><i class="fa fa-users"></i> Employee</a></li>
          <li><a href="#">Ajoute</a></li>
          <!-- <li class="active">Data tables</li> -->
       </ol>
