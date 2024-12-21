@@ -61,7 +61,7 @@ Dans le Module Employés, les permissions du rôle "User" n’étaient pas clair
 
 ## **Contact**
 Si vous avez des questions ou des retours, vous pouvez me contacter via cet email :
-[**example.email@test.com**](mailto:example.email@test.com).
+[**example.email@test.com**](mailto:aitelhajmarouane00@gmail.com).
 
 Merci pour votre attention et l’opportunité de participer à ce test.
 
